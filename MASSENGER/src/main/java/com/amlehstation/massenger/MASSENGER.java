@@ -13,6 +13,7 @@ package com.amlehstation.massenger;
 public class MASSENGER {
 
     public static void main(String[] args) {
+        System.out.println("  sadasdsad ");
         LOGIN_SCREEN L1= new LOGIN_SCREEN();
         L1.show();
     }
