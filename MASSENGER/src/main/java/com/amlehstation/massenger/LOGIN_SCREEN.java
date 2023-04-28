@@ -230,6 +230,13 @@ public class LOGIN_SCREEN extends javax.swing.JFrame {
         // TODO add your handling code here:
         int u=checkUser();
         if(u==2){
+        ADMIN_SCREEN AdminS= new ADMIN_SCREEN();
+        dispose();
+        AdminS.setExtendedState(MAXIMIZED_BOTH);
+        AdminS.show();
+        
+        }
+        else if(u==3){
         DOCTOR_SCREEN DoctorS= new DOCTOR_SCREEN();
         dispose();
         DoctorS.setExtendedState(MAXIMIZED_BOTH);
@@ -318,8 +325,21 @@ public class LOGIN_SCREEN extends javax.swing.JFrame {
                 pst.setString(2, pass);
                 ResultSet rs=pst.executeQuery();
                 if(rs.next()){
-
+                    if(rs.getString("role").equals("admin")){
+                    return 2;
+                    }
+                    else if(rs.getString("role").equals("coAdmin")){
                     return 3;
+                    }
+                    else if(rs.getString("role").equals("Doctor")){
+                    return 4;
+                    }
+                    else{
+                    return 5;
+                    }
+                    
+
+                    
                 } else {
 
                     JOptionPane.showMessageDialog(this, "wrong pass and username");
@@ -332,6 +352,7 @@ public class LOGIN_SCREEN extends javax.swing.JFrame {
             }
         }
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.Box.Filler filler1;
