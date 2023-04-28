@@ -10,4 +10,17 @@ package com.amlehstation.massenger;
  */
 public class ADMIN extends PERSON {
     
+    
+    public void addCoAdmin(){  
+    }
+    public void deleteCoAdmin(){  
+    }
+    public void addDoctor(){
+    }
+    public void deleteDoctor(){
+    }
+    public void addSecretary(){
+    }
+    public void deleteSecretary(){
+    }
 }
