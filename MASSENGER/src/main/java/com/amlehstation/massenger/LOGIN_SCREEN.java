@@ -229,25 +229,26 @@ public class LOGIN_SCREEN extends javax.swing.JFrame {
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
         // TODO add your handling code here:
         int u=checkUser();
-        if(u==2){
+        if(u==2||u==3){
         ADMIN_SCREEN AdminS= new ADMIN_SCREEN();
         dispose();
         AdminS.setExtendedState(MAXIMIZED_BOTH);
         AdminS.show();
-        
         }
-        else if(u==3){
+        
+        
+        else if(u==4){
         DOCTOR_SCREEN DoctorS= new DOCTOR_SCREEN();
         dispose();
         DoctorS.setExtendedState(MAXIMIZED_BOTH);
         DoctorS.show();
         
         }
-        else if(u==3){
-        ADMIN_SCREEN a= new ADMIN_SCREEN();
+        else if(u==5){
+        SECRETARY_SCREEN S= new SECRETARY_SCREEN();
         dispose();
-        a.setExtendedState(MAXIMIZED_BOTH);
-        a.show();}
+        S.setExtendedState(MAXIMIZED_BOTH);
+        S.show();}
         
         
         
