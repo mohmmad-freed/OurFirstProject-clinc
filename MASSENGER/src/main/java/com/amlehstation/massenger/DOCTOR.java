@@ -9,6 +9,11 @@ package com.amlehstation.massenger;
  * @author msamalq
  */
 public class DOCTOR extends PERSON {
+
+    
+   
+
+ 
     
     
-}
+   }

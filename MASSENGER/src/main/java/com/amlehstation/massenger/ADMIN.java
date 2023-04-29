@@ -9,6 +9,8 @@ package com.amlehstation.massenger;
  * @author msamalq
  */
 public class ADMIN extends PERSON {
+
+    
     
     
     public void addCoAdmin(){  

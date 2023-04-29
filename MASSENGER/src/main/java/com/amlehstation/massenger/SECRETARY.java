@@ -9,5 +9,7 @@ package com.amlehstation.massenger;
  * @author msamalq
  */
 public class SECRETARY extends PERSON {
+
+   
     
 }

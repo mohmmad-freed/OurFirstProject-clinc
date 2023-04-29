@@ -10,7 +10,11 @@ package com.amlehstation.massenger;
  */
 public class PERSON {
     private String Name ,Pass, Email;
-    private int Phone;
+    private int Phone;  
+
+   
+    
+    
 
     public void setName(String Name) {
         this.Name = Name;
