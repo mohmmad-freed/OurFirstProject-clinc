@@ -4,6 +4,11 @@
  */
 package com.amlehstation.massenger;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
 /**
  *
  * @author ASD
@@ -203,6 +208,17 @@ public class ADMIN_SCREEN extends javax.swing.JFrame {
 
     private void AddDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddDActionPerformed
         // TODO add your handling code here:
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+                Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/maindb","root","");
+                String sql="insert into users()";
+                PreparedStatement pst=con.prepareStatement(sql);
+//                pst.setString(1, userName1);
+//                pst.setString(2, pass);
+                ResultSet rs=pst.executeQuery();
+            
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_AddDActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
