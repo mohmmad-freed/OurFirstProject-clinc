@@ -9,7 +9,7 @@ package com.amlehstation.massenger;
  * @author msamalq
  */
 public class PERSON {
-    private String Name ,Pass;
+    private String Name ,Pass, Email;
     private int Phone;
 
     public void setName(String Name) {
