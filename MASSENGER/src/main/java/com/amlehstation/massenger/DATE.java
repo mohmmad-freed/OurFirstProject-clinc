@@ -4,6 +4,7 @@
  */
 package com.amlehstation.massenger;
 import java.time.LocalDate;
+import java.time.Month;
 /**
  *
  * @author msamalq
@@ -12,21 +13,14 @@ import java.time.LocalDate;
 public class DATE {
    private int time;
     private LocalDate date; // ex: LocalDate date = LocalDate.of(2023, 5, 5);
-    private int meetingTime;
+    private int meetingDuration;
 
-    public void Date(int time, LocalDate date, int meetingTime) {
-        this.time = time;
-        this.date = date;
-        this.meetingTime = meetingTime;
+    public void DATE( int year,int month,int day,int hours, int minutes, int meetingDuration) {
+        this.time = hours * 100 + minutes;
+        this.date = LocalDate.of(year, month, day);
+        this.meetingDuration = meetingDuration;
     }
 
-    public int getTime() {
-        return time;
-    }
-
-    public void setTime(int time) {
-        this.time = time;
-    }
 
     public LocalDate getDate() {
         return date;
@@ -37,11 +31,11 @@ public class DATE {
     }
 
     public int getMeetingTime() {
-        return meetingTime;
+        return meetingDuration;
     }
 
-    public void setMeetingTime(int meetingTime) {
-        this.meetingTime = meetingTime;
+    public void setMeetingDuration(int meetingTime) {
+        this.meetingDuration = meetingTime;
     }
     
     public void setDay(int day) {

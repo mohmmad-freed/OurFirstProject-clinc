@@ -9,7 +9,7 @@ package com.amlehstation.massenger;
  * @author msamalq
  */
 public class PATIENT extends PERSON {
-
+DATE date;
     
     
     
