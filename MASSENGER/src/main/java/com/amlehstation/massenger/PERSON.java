@@ -10,7 +10,7 @@ package com.amlehstation.massenger;
  */
 public class PERSON {
     private String Name ,Pass, Email;
-    private int Phone;  
+    private String Phone;  
 
    
     
@@ -24,7 +24,7 @@ public class PERSON {
         this.Pass = Pass;
     }
 
-    public void setPhone(int Phone) {
+    public void setPhone(String Phone) {
         this.Phone = Phone;
     }
 
@@ -36,8 +36,16 @@ public class PERSON {
         return Pass;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return Phone;
+    }
+
+    public void setEmail(String Email) {
+        this.Email = Email;
+    }
+
+    public String getEmail() {
+        return Email;
     }
     
 

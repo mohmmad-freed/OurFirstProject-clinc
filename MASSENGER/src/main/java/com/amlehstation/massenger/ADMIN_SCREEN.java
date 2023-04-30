@@ -208,17 +208,10 @@ public class ADMIN_SCREEN extends javax.swing.JFrame {
 
     private void AddDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddDActionPerformed
         // TODO add your handling code here:
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-                Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/maindb","root","");
-                String sql="insert into users()";
-                PreparedStatement pst=con.prepareStatement(sql);
-//                pst.setString(1, userName1);
-//                pst.setString(2, pass);
-                ResultSet rs=pst.executeQuery();
-            
-        } catch (Exception e) {
-        }
+        ADDD_SCREEN addd=new ADDD_SCREEN();
+        dispose();
+        addd.show();
+        addd.setExtendedState(MAXIMIZED_BOTH);
     }//GEN-LAST:event_AddDActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
