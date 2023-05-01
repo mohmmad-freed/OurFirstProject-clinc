@@ -4,6 +4,12 @@
  */
 package com.amlehstation.massenger;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ASD
@@ -709,26 +715,69 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if(jSaturday.isSelected()){System.out.println("hell no Saturday "+SaturdayComboBoxFH.getItemAt(WIDTH));}
-        if(jSunday.isSelected()){System.out.println("hell no Sunday");}
-        if(jMonday.isSelected()){System.out.println("hell no Monday");}
-        if(jTuesday.isSelected()){System.out.println("hell no Tuesday");}
-        if(jWednesday.isSelected()){System.out.println("hell no Wednesday");}
-        if(jThursday.isSelected()){System.out.println("hell no Thursday");}
-        if(jFriday.isSelected()){System.out.println("yesss Friday");}
-             
-        String pass = new String(jPasswordField1.getPassword());
-        DOCTOR d =new DOCTOR();
-        d.setName(JName.getText());
-        d.setPhone(JPhone.getText());
-        d.setEmail(JEmail.getText());
-        d.setPass(pass);
+//        if(jSaturday.isSelected()){System.out.println("hell no Saturday "+SaturdayComboBoxFH.getItemAt(WIDTH));}
+//        if(jSunday.isSelected()){System.out.println("hell no Sunday");}
+//        if(jMonday.isSelected()){System.out.println("hell no Monday");}
+//        if(jTuesday.isSelected()){System.out.println("hell no Tuesday");}
+//        if(jWednesday.isSelected()){System.out.println("hell no Wednesday");}
+//        if(jThursday.isSelected()){System.out.println("hell no Thursday");}
+//        if(jFriday.isSelected()){System.out.println("yesss Friday");}
+        if (validateFields()) {
+            String phone = JPhone.getText();
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/maindb", "root", "");
+
+                // إجراء فحص للتحقق مما إذا كان الاسم أو الرقم أو البريد الإلكتروني موجودين بالفعل في قاعدة البيانات
+                PreparedStatement checkStmt = con.prepareStatement("SELECT * FROM Doctor WHERE DoName = ? OR DoPhone = ? OR DoEmail = ?");
+                checkStmt.setString(1, JName.getText());
+                checkStmt.setString(2, JPhone.getText());
+                checkStmt.setString(3, JEmail.getText());
+                ResultSet rs = checkStmt.executeQuery();
+
+                if (rs.next()) {
+                    // يتم عرض رسالة الخطأ إذا تم العثور على سجل بالفعل في قاعدة البيانات
+                    JOptionPane.showMessageDialog(this, "Doctor name or phone or email already exists");
+                } else {
+                    // يتم إجراء إجراء الإدخال INSERT في قاعدة البيانات إذا لم يتم العثور على أي سجل متطابق
+                    PreparedStatement insertStmt = con.prepareStatement("INSERT INTO Doctor (DoName, DoPhone, DoEmail, DoPass) VALUES (?, ?, ?, ?)");
+                    String pass = new String(jPasswordField1.getPassword());
+                    DOCTOR d = new DOCTOR();
+                    d.setName(JName.getText());
+                    d.setPhone(JPhone.getText());
+                    d.setEmail(JEmail.getText());
+                    d.setPass(pass);
+                    insertStmt.setString(1, d.getName());
+                    insertStmt.setString(2, d.getPhone());
+                    insertStmt.setString(3, d.getEmail());
+                    insertStmt.setString(4, d.getPass());
+                    insertStmt.executeUpdate();
+                    insertStmt.close();
+                    dispose();
+                    ADMIN_SCREEN a = new ADMIN_SCREEN();
+                    a.show();
+                    a.setExtendedState(MAXIMIZED_BOTH);
+                    JOptionPane.showMessageDialog(this, "Successfully added");
+                }
+
+                // إغلاق الاتصال بقاعدة البيانات والكائن PreparedStatement
+                checkStmt.close();
+                con.close();
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e);
+            }
+
+        }
+
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         dispose();
-        ADMIN_SCREEN a=new ADMIN_SCREEN();
+        ADMIN_SCREEN a = new ADMIN_SCREEN();
         a.show();
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -769,6 +818,33 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
                 new ADDD_SCREEN().setVisible(true);
             }
         });
+    }
+
+    private boolean validateFields() {
+        // فحص ما إذا كانت جميع الحقول مملوءة بشكل صحيح
+
+        if (JName.getText().isEmpty() || JPhone.getText().isEmpty() || JEmail.getText().isEmpty() || jPasswordField1.getPassword().length == 0) {
+            JOptionPane.showMessageDialog(this, "Please fill all required fields");
+            return false;
+        }
+        // فحص ما إذا كان رقم الهاتف يبدأ بـ 0 ويحتوي على 10 أو 14 رقمًا
+        String phoneRegex = "^0[0-9]{9,12}$";
+        if (!JPhone.getText().matches(phoneRegex)) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid phone number starting with 0 or +966 and consisting of 10 or 14 digits");
+            return false;
+        }
+        // فحص ما إذا كانت البريد الإلكتروني صالحة
+        String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+        if (!JEmail.getText().matches(emailRegex)) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid email address");
+            return false;
+        }
+        // فحص ما إذا كانت كلمة المرور قد تم إدخالها
+        if (new String(jPasswordField1.getPassword()).isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter a password");
+            return false;
+        }
+        return true;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
