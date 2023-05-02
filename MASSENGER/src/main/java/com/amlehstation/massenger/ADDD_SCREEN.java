@@ -123,10 +123,10 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(39, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(21, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 0, 51), 2));
@@ -379,9 +379,9 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(725, Short.MAX_VALUE)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap(10, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -514,23 +514,23 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addContainerGap(14, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(JName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(JPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(JEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20)
                     .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jSaturday)
@@ -540,7 +540,7 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(SaturdayComboBoxTH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SaturdayComboBoxTM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jSunday)
                     .addComponent(jLabel8)
@@ -549,7 +549,7 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
                     .addComponent(jLabel9)
                     .addComponent(SundayComboBoxTH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SundayComboBoxTM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jMonday)
                     .addComponent(jLabel10)
@@ -558,7 +558,7 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
                     .addComponent(jLabel11)
                     .addComponent(MondayComboBoxTH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(MondayComboBoxTM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTuesday)
                     .addComponent(jLabel12)
@@ -567,7 +567,7 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
                     .addComponent(jLabel13)
                     .addComponent(TuesdayComboBoxTH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TuesdayComboBoxTM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jWednesday)
                     .addComponent(jLabel14)
@@ -576,7 +576,7 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
                     .addComponent(jLabel15)
                     .addComponent(WednesdayComboBoxTH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(WednesdayComboBoxTM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jThursday)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -586,7 +586,7 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
                         .addComponent(jLabel17)
                         .addComponent(ThursdayComboBoxTH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(ThursdayComboBoxTM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jFriday)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -598,9 +598,9 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
                         .addComponent(FridayComboBoxTM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(45, 45, 45)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -619,7 +619,7 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -872,9 +872,9 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
 
 // إضافة الأيام العملية وأوقات العمل للقائمة
         if (jSaturday.isSelected()) {
-            workingHoursList.add("Saturday" );
-            workingHoursList.add(TimeConverter(SaturdayComboBoxFH.getSelectedItem().toString())+":"+(String) SaturdayComboBoxFM.getSelectedItem() + "-" + TimeConverter(SaturdayComboBoxTH.getSelectedItem().toString()) + ":" + (String) SaturdayComboBoxTM.getSelectedItem());
-            System.out.println(TimeConverter(SaturdayComboBoxFH.getSelectedItem().toString())+":"+(String) SaturdayComboBoxFM.getSelectedItem() + "-" + TimeConverter(SaturdayComboBoxTH.getSelectedItem().toString()) + ":" + (String) SaturdayComboBoxTM.getSelectedItem());
+            workingHoursList.add("Saturday");
+            workingHoursList.add(TimeConverter(SaturdayComboBoxFH.getSelectedItem().toString()) + ":" + (String) SaturdayComboBoxFM.getSelectedItem() + "-" + TimeConverter(SaturdayComboBoxTH.getSelectedItem().toString()) + ":" + (String) SaturdayComboBoxTM.getSelectedItem());
+            System.out.println(TimeConverter(SaturdayComboBoxFH.getSelectedItem().toString()) + ":" + (String) SaturdayComboBoxFM.getSelectedItem() + "-" + TimeConverter(SaturdayComboBoxTH.getSelectedItem().toString()) + ":" + (String) SaturdayComboBoxTM.getSelectedItem());
         }
         if (jSunday.isSelected()) {
             workingHoursList.add("Sunday");
@@ -882,49 +882,43 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
         }
         if (jMonday.isSelected()) {
             workingHoursList.add("Saturday");
-            workingHoursList.add(TimeConverter(MondayComboBoxFH.getSelectedItem().toString()) + ":" + (String) MondayComboBoxFM.getSelectedItem() + "-" + TimeConverter(MondayComboBoxTH.getSelectedItem().toString()) + ":" +(String) MondayComboBoxTM.getSelectedItem());
+            workingHoursList.add(TimeConverter(MondayComboBoxFH.getSelectedItem().toString()) + ":" + (String) MondayComboBoxFM.getSelectedItem() + "-" + TimeConverter(MondayComboBoxTH.getSelectedItem().toString()) + ":" + (String) MondayComboBoxTM.getSelectedItem());
         }
         if (jTuesday.isSelected()) {
             workingHoursList.add("Saturday");
-            workingHoursList.add(TimeConverter(TuesdayComboBoxFH.getSelectedItem().toString()) + ":" + (String) TuesdayComboBoxFM.getSelectedItem() + "-" + TimeConverter(TuesdayComboBoxTH.getSelectedItem().toString()) + ":" +(String) TuesdayComboBoxTM.getSelectedItem());
-        
+            workingHoursList.add(TimeConverter(TuesdayComboBoxFH.getSelectedItem().toString()) + ":" + (String) TuesdayComboBoxFM.getSelectedItem() + "-" + TimeConverter(TuesdayComboBoxTH.getSelectedItem().toString()) + ":" + (String) TuesdayComboBoxTM.getSelectedItem());
+
         }
         if (jWednesday.isSelected()) {
-            workingHoursList.add("Wednesday" );
-            workingHoursList.add(TimeConverter(WednesdayComboBoxFH.getSelectedItem().toString()) + ":" +(String) WednesdayComboBoxFM.getSelectedItem() + "-" + TimeConverter(WednesdayComboBoxTH.getSelectedItem().toString()) + ":" +(String) WednesdayComboBoxTM.getSelectedItem());
+            workingHoursList.add("Wednesday");
+            workingHoursList.add(TimeConverter(WednesdayComboBoxFH.getSelectedItem().toString()) + ":" + (String) WednesdayComboBoxFM.getSelectedItem() + "-" + TimeConverter(WednesdayComboBoxTH.getSelectedItem().toString()) + ":" + (String) WednesdayComboBoxTM.getSelectedItem());
         }
         if (jThursday.isSelected()) {
             workingHoursList.add("Thursday");
-            workingHoursList.add(TimeConverter(ThursdayComboBoxFH.getSelectedItem().toString()) + ":" +(String) ThursdayComboBoxFM.getSelectedItem() + "-" + TimeConverter(ThursdayComboBoxTH.getSelectedItem().toString()) + ":" +(String) ThursdayComboBoxTM.getSelectedItem());
+            workingHoursList.add(TimeConverter(ThursdayComboBoxFH.getSelectedItem().toString()) + ":" + (String) ThursdayComboBoxFM.getSelectedItem() + "-" + TimeConverter(ThursdayComboBoxTH.getSelectedItem().toString()) + ":" + (String) ThursdayComboBoxTM.getSelectedItem());
         }
         if (jFriday.isSelected()) {
             workingHoursList.add("Friday");
-            workingHoursList.add(TimeConverter(FridayComboBoxFH.getSelectedItem().toString()) + ":" +(String) FridayComboBoxFM.getSelectedItem() + "-" + TimeConverter(FridayComboBoxTH.getSelectedItem().toString()) + ":" +(String) FridayComboBoxTM.getSelectedItem());
+            workingHoursList.add(TimeConverter(FridayComboBoxFH.getSelectedItem().toString()) + ":" + (String) FridayComboBoxFM.getSelectedItem() + "-" + TimeConverter(FridayComboBoxTH.getSelectedItem().toString()) + ":" + (String) FridayComboBoxTM.getSelectedItem());
         }
         String[] WorkingHours3 = workingHoursList.toArray(new String[workingHoursList.size()]);
 
-
 // استرداد مواعيد الأيام وطباعتها بالتنسيق المطلوب
-        
-String[] WorkingHours2={"Saturday", "10:00-13:00", "Sunday", "11:00-13:30"} ;
+        DSCHEDULE scheduleE = new DSCHEDULE(WorkingHours3);
+        List<String[]> appointments = scheduleE.getAppointments();
+        if (appointments.isEmpty()) {
+            System.out.println("No appointments available");
+        } else {
 
+            for (String[] dayAndAppointments : appointments) {
+                System.out.print(dayAndAppointments[0]);
+                for (int i = 1; i < dayAndAppointments.length; i++) {
+                    System.out.print(" " + dayAndAppointments[i]);
+                }
+                System.out.println();
+            }
 
-     DSCHEDULE scheduleE = new DSCHEDULE(WorkingHours3);
-     List<String[]> appointments = scheduleE.getAppointments();
-if (appointments.isEmpty()) {
-    System.out.println("No appointments available");
-} else {
-
-
-for (String[] dayAndAppointments : appointments) {
-    System.out.print(dayAndAppointments[0]);
-    for (int i = 1; i < dayAndAppointments.length; i++) {
-        System.out.print(" " + dayAndAppointments[i]);
-    }
-    System.out.println();
-}
-
-}
+        }
     }
     /////////////////////
     ////////////////////////////////////////////////////////////////////////////////////التحويل لنظام 24 ساعة/////////////////////////////////////////////////////////////////////
