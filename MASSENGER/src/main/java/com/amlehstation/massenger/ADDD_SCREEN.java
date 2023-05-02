@@ -726,14 +726,7 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Schedule();
-//        if(jSaturday.isSelected()){System.out.println("hell no Saturday "+SaturdayComboBoxFH.getItemAt(WIDTH));}
-//        if(jSunday.isSelected()){System.out.println("hell no Sunday");}
-//        if(jMonday.isSelected()){System.out.println("hell no Monday");}
-//        if(jTuesday.isSelected()){System.out.println("hell no Tuesday");}
-//        if(jWednesday.isSelected()){System.out.println("hell no Wednesday");}
-//        if(jThursday.isSelected()){System.out.println("hell no Thursday");}
-//        if(jFriday.isSelected()){System.out.println("yesss Friday");}
+
         if (validateFields()) {
             String phone = JPhone.getText();
             try {
@@ -838,34 +831,6 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
     }
 
     private void Schedule() {
-        SaturdayComboBoxFH.setSelectedItem("00");
-        SaturdayComboBoxFM.setSelectedItem("00");
-        SaturdayComboBoxTH.setSelectedItem("00");
-        SaturdayComboBoxTM.setSelectedItem("00");
-        SundayComboBoxFH.setSelectedItem("00");
-        SundayComboBoxFM.setSelectedItem("00");
-        SundayComboBoxTH.setSelectedItem("00");
-        SundayComboBoxTM.setSelectedItem("00");
-        MondayComboBoxFH.setSelectedItem("00");
-        MondayComboBoxFM.setSelectedItem("00");
-        MondayComboBoxTH.setSelectedItem("00");
-        MondayComboBoxTM.setSelectedItem("00");
-        TuesdayComboBoxFH.setSelectedItem("00");
-        TuesdayComboBoxFM.setSelectedItem("00");
-        TuesdayComboBoxTH.setSelectedItem("00");
-        TuesdayComboBoxTM.setSelectedItem("00");
-        WednesdayComboBoxFH.setSelectedItem("00");
-        WednesdayComboBoxFM.setSelectedItem("00");
-        WednesdayComboBoxTH.setSelectedItem("00");
-        WednesdayComboBoxTM.setSelectedItem("00");
-        ThursdayComboBoxFH.setSelectedItem("00");
-        ThursdayComboBoxFM.setSelectedItem("00");
-        ThursdayComboBoxTH.setSelectedItem("00");
-        ThursdayComboBoxTM.setSelectedItem("00");
-        FridayComboBoxFH.setSelectedItem("00");
-        FridayComboBoxFM.setSelectedItem("00");
-        FridayComboBoxTH.setSelectedItem("00");
-        FridayComboBoxTM.setSelectedItem("00");
         // تعريف وإعداد المصفوفة والقائمة
         String[] WorkingHours = {};
         ArrayList<String> workingHoursList = new ArrayList<String>(Arrays.asList(WorkingHours));
@@ -881,11 +846,11 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
             workingHoursList.add(TimeConverter(SundayComboBoxFH.getSelectedItem().toString()) + ":" + (String) SundayComboBoxFM.getSelectedItem() + "-" + TimeConverter(SundayComboBoxTH.getSelectedItem().toString()) + ":" + (String) SundayComboBoxTM.getSelectedItem());
         }
         if (jMonday.isSelected()) {
-            workingHoursList.add("Saturday");
+            workingHoursList.add("Monday");
             workingHoursList.add(TimeConverter(MondayComboBoxFH.getSelectedItem().toString()) + ":" + (String) MondayComboBoxFM.getSelectedItem() + "-" + TimeConverter(MondayComboBoxTH.getSelectedItem().toString()) + ":" + (String) MondayComboBoxTM.getSelectedItem());
         }
         if (jTuesday.isSelected()) {
-            workingHoursList.add("Saturday");
+            workingHoursList.add("Tuesday");
             workingHoursList.add(TimeConverter(TuesdayComboBoxFH.getSelectedItem().toString()) + ":" + (String) TuesdayComboBoxFM.getSelectedItem() + "-" + TimeConverter(TuesdayComboBoxTH.getSelectedItem().toString()) + ":" + (String) TuesdayComboBoxTM.getSelectedItem());
 
         }
@@ -903,20 +868,11 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
         }
         String[] WorkingHours3 = workingHoursList.toArray(new String[workingHoursList.size()]);
 
-// استرداد مواعيد الأيام وطباعتها بالتنسيق المطلوب
-        DSCHEDULE scheduleE = new DSCHEDULE(WorkingHours3);
-        List<String[]> appointments = scheduleE.getAppointments();
-        if (appointments.isEmpty()) {
-            System.out.println("No appointments available");
-        } else {
+        DSCHEDULE schedule = new DSCHEDULE();
+        String[] quarterHours = schedule.convertToQuarterHours(WorkingHours3);
 
-            for (String[] dayAndAppointments : appointments) {
-                System.out.print(dayAndAppointments[0]);
-                for (int i = 1; i < dayAndAppointments.length; i++) {
-                    System.out.print(" " + dayAndAppointments[i]);
-                }
-                System.out.println();
-            }
+        for (String hour : quarterHours) {
+            System.out.println(hour);
 
         }
     }
@@ -928,7 +884,6 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh a", Locale.ENGLISH);
         LocalTime time = LocalTime.parse(timeString, formatter);
         String time24hr = time.format(DateTimeFormatter.ofPattern("HH"));
-        System.out.println(time24hr);
         return time24hr;
 
     }

@@ -8,51 +8,40 @@ package com.amlehstation.massenger;
  *
  * @author msamalq
  */
-import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 public class DSCHEDULE {
-    
-private Map<String, List<LocalTime>> DSCHEDULE = new HashMap<>();
-    private static final DateTimeFormatter TIME_FORMAT = DateTimeFormatter.ofPattern("HH:mm");
-    private static final int APPOINTMENT_DURATION_MINUTES = 15;
-
-    public DSCHEDULE(String[] workingHours) {
-        String currentDay = null;
-        for (String hours : workingHours) {
-            if (currentDay == null) {
-                currentDay = hours;
-            } else {
-                String[] startAndEndTimes = hours.split("-");
-                LocalTime startTime = LocalTime.parse(startAndEndTimes[0], TIME_FORMAT);
-                LocalTime endTime = LocalTime.parse(startAndEndTimes[1], TIME_FORMAT);
-
-                List<LocalTime> appointmentTimes = new ArrayList<>();
-                while (startTime.plusMinutes(APPOINTMENT_DURATION_MINUTES).isBefore(endTime)) {
-                    appointmentTimes.add(startTime);
-                    startTime = startTime.plusMinutes(APPOINTMENT_DURATION_MINUTES);
+    public String[] convertToQuarterHours(String[] workingHours) {
+        ArrayList<String> quarterHoursList = new ArrayList<String>();
+        for (int i = 0; i < workingHours.length; i += 2) {
+            String day = workingHours[i];
+            String[] startHourParts = workingHours[i + 1].split(":");
+            int startHour = Integer.parseInt(startHourParts[0]);
+            int startMinute = Integer.parseInt(startHourParts[1].split("-")[0]);
+            String[] endHourParts = workingHours[i + 1].split("-")[1].split(":");
+            int endHour = Integer.parseInt(endHourParts[0]);
+            int endMinute = Integer.parseInt(endHourParts[1]);
+            for (int hour = startHour; hour <= endHour; hour++) {
+                for (int minute = 0; minute < 60; minute += 15) {
+                    if (hour == startHour && minute < startMinute) {
+                        continue;
+                    }
+                    if (hour == endHour && minute > endMinute) {
+                        continue;
+                    }
+                    quarterHoursList.add(day);
+                    String hourString = (hour < 10) ? "0" + hour : "" + hour;
+                    String minuteString = (minute < 10) ? "0" + minute : "" + minute;
+                    quarterHoursList.add(hourString + ":" + minuteString);
                 }
-               DSCHEDULE.put(currentDay, appointmentTimes);
-                currentDay = null;
             }
         }
-    }
-
-    public List<String[]> getAppointments() {
-        List<String[]> appointments = new ArrayList<>();
-        for (Map.Entry<String, List<LocalTime>> entry : DSCHEDULE.entrySet()) {
-            String day = entry.getKey();
-            List<LocalTime> appointmentTimes = entry.getValue();
-            for (LocalTime time : appointmentTimes) {
-                String[] appointment = {day, time.format(TIME_FORMAT)};
-                appointments.add(appointment);
-            }
-        }
-        return appointments;
+        return quarterHoursList.toArray(new String[quarterHoursList.size()]);
     }
 }
