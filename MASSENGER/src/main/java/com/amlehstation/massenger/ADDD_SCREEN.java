@@ -9,6 +9,12 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Locale;
 
 /**
  *
@@ -88,9 +94,9 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         FridayComboBoxFH = new javax.swing.JComboBox<>();
-        jComboBox27 = new javax.swing.JComboBox<>();
-        jComboBox28 = new javax.swing.JComboBox<>();
-        jComboBox29 = new javax.swing.JComboBox<>();
+        FridayComboBoxFM = new javax.swing.JComboBox<>();
+        FridayComboBoxTH = new javax.swing.JComboBox<>();
+        FridayComboBoxTM = new javax.swing.JComboBox<>();
         jLabel19 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -199,7 +205,12 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
             }
         });
 
-        SaturdayComboBoxFM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
+        SaturdayComboBoxFM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
+        SaturdayComboBoxFM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SaturdayComboBoxFMActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("to");
 
@@ -210,7 +221,7 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
             }
         });
 
-        SaturdayComboBoxTM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
+        SaturdayComboBoxTM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
 
         jLabel8.setText("FROM");
 
@@ -221,7 +232,7 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
             }
         });
 
-        SundayComboBoxFM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
+        SundayComboBoxFM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
 
         SundayComboBoxTH.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01 PM", "02 PM", "03 PM", "04 PM", "05 PM", "06 PM", "07 PM", "08 PM", "09 PM", "10 PM", "11 PM", "12 AM", "01 AM", "02 AM", "03 AM", "04 AM", "05 AM", "06 AM", "07 AM", "08 AM", "09 AM", "10 AM", "11 AM", "12 PM" }));
         SundayComboBoxTH.addActionListener(new java.awt.event.ActionListener() {
@@ -230,7 +241,7 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
             }
         });
 
-        SundayComboBoxTM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
+        SundayComboBoxTM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
 
         jLabel9.setText("to");
 
@@ -243,7 +254,7 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
             }
         });
 
-        MondayComboBoxFM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
+        MondayComboBoxFM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
 
         MondayComboBoxTH.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01 PM", "02 PM", "03 PM", "04 PM", "05 PM", "06 PM", "07 PM", "08 PM", "09 PM", "10 PM", "11 PM", "12 AM", "01 AM", "02 AM", "03 AM", "04 AM", "05 AM", "06 AM", "07 AM", "08 AM", "09 AM", "10 AM", "11 AM", "12 PM" }));
         MondayComboBoxTH.addActionListener(new java.awt.event.ActionListener() {
@@ -252,7 +263,7 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
             }
         });
 
-        MondayComboBoxTM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
+        MondayComboBoxTM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
 
         jLabel11.setText("to");
 
@@ -265,7 +276,7 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
             }
         });
 
-        TuesdayComboBoxFM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
+        TuesdayComboBoxFM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
 
         TuesdayComboBoxTH.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01 PM", "02 PM", "03 PM", "04 PM", "05 PM", "06 PM", "07 PM", "08 PM", "09 PM", "10 PM", "11 PM", "12 AM", "01 AM", "02 AM", "03 AM", "04 AM", "05 AM", "06 AM", "07 AM", "08 AM", "09 AM", "10 AM", "11 AM", "12 PM" }));
         TuesdayComboBoxTH.addActionListener(new java.awt.event.ActionListener() {
@@ -274,7 +285,7 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
             }
         });
 
-        TuesdayComboBoxTM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
+        TuesdayComboBoxTM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
 
         jLabel13.setText("to");
 
@@ -287,7 +298,7 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
             }
         });
 
-        WednesdayComboBoxFM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
+        WednesdayComboBoxFM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
 
         WednesdayComboBoxTH.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01 PM", "02 PM", "03 PM", "04 PM", "05 PM", "06 PM", "07 PM", "08 PM", "09 PM", "10 PM", "11 PM", "12 AM", "01 AM", "02 AM", "03 AM", "04 AM", "05 AM", "06 AM", "07 AM", "08 AM", "09 AM", "10 AM", "11 AM", "12 PM" }));
         WednesdayComboBoxTH.addActionListener(new java.awt.event.ActionListener() {
@@ -296,7 +307,7 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
             }
         });
 
-        WednesdayComboBoxTM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
+        WednesdayComboBoxTM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
 
         jLabel15.setText("to");
 
@@ -309,7 +320,7 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
             }
         });
 
-        ThursdayComboBoxFM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
+        ThursdayComboBoxFM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
 
         ThursdayComboBoxTH.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01 PM", "02 PM", "03 PM", "04 PM", "05 PM", "06 PM", "07 PM", "08 PM", "09 PM", "10 PM", "11 PM", "12 AM", "01 AM", "02 AM", "03 AM", "04 AM", "05 AM", "06 AM", "07 AM", "08 AM", "09 AM", "10 AM", "11 AM", "12 PM" }));
         ThursdayComboBoxTH.addActionListener(new java.awt.event.ActionListener() {
@@ -318,7 +329,7 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
             }
         });
 
-        ThursdayComboBoxTM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
+        ThursdayComboBoxTM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
 
         jLabel17.setText("to");
 
@@ -331,16 +342,16 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
             }
         });
 
-        jComboBox27.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
+        FridayComboBoxFM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
 
-        jComboBox28.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01 PM", "02 PM", "03 PM", "04 PM", "05 PM", "06 PM", "07 PM", "08 PM", "09 PM", "10 PM", "11 PM", "12 AM", "01 AM", "02 AM", "03 AM", "04 AM", "05 AM", "06 AM", "07 AM", "08 AM", "09 AM", "10 AM", "11 AM", "12 PM" }));
-        jComboBox28.addActionListener(new java.awt.event.ActionListener() {
+        FridayComboBoxTH.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01 PM", "02 PM", "03 PM", "04 PM", "05 PM", "06 PM", "07 PM", "08 PM", "09 PM", "10 PM", "11 PM", "12 AM", "01 AM", "02 AM", "03 AM", "04 AM", "05 AM", "06 AM", "07 AM", "08 AM", "09 AM", "10 AM", "11 AM", "12 PM" }));
+        FridayComboBoxTH.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox28ActionPerformed(evt);
+                FridayComboBoxTHActionPerformed(evt);
             }
         });
 
-        jComboBox29.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
+        FridayComboBoxTM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
 
         jLabel19.setText("to");
 
@@ -470,13 +481,13 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
                                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                     .addComponent(FridayComboBoxFH, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(jComboBox27, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(FridayComboBoxFM, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addGap(18, 18, 18)
                                                     .addComponent(jLabel19)
                                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(jComboBox28, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(FridayComboBoxTH, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(jComboBox29, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                                    .addComponent(FridayComboBoxTM, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -581,10 +592,10 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel18)
                         .addComponent(FridayComboBoxFH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jComboBox27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(FridayComboBoxFM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel19)
-                        .addComponent(jComboBox28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jComboBox29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(FridayComboBoxTH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(FridayComboBoxTM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(45, 45, 45)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44)
@@ -709,12 +720,13 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_FridayComboBoxFHActionPerformed
 
-    private void jComboBox28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox28ActionPerformed
+    private void FridayComboBoxTHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FridayComboBoxTHActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox28ActionPerformed
+    }//GEN-LAST:event_FridayComboBoxTHActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        Schedule();
 //        if(jSaturday.isSelected()){System.out.println("hell no Saturday "+SaturdayComboBoxFH.getItemAt(WIDTH));}
 //        if(jSunday.isSelected()){System.out.println("hell no Sunday");}
 //        if(jMonday.isSelected()){System.out.println("hell no Monday");}
@@ -739,6 +751,7 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
                     // يتم عرض رسالة الخطأ إذا تم العثور على سجل بالفعل في قاعدة البيانات
                     JOptionPane.showMessageDialog(this, "Doctor name or phone or email already exists");
                 } else {
+
                     // يتم إجراء إجراء الإدخال INSERT في قاعدة البيانات إذا لم يتم العثور على أي سجل متطابق
                     PreparedStatement insertStmt = con.prepareStatement("INSERT INTO Doctor (DoName, DoPhone, DoEmail, DoPass) VALUES (?, ?, ?, ?)");
                     String pass = new String(jPasswordField1.getPassword());
@@ -751,6 +764,7 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
                     insertStmt.setString(2, d.getPhone());
                     insertStmt.setString(3, d.getEmail());
                     insertStmt.setString(4, d.getPass());
+
                     insertStmt.executeUpdate();
                     insertStmt.close();
                     dispose();
@@ -771,7 +785,6 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
         }
 
 
-
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -784,6 +797,10 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
     private void jSundayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSundayActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jSundayActionPerformed
+
+    private void SaturdayComboBoxFMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaturdayComboBoxFMActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SaturdayComboBoxFMActionPerformed
 
     /**
      * @param args the command line arguments
@@ -820,6 +837,109 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
         });
     }
 
+    private void Schedule() {
+        SaturdayComboBoxFH.setSelectedItem("00");
+        SaturdayComboBoxFM.setSelectedItem("00");
+        SaturdayComboBoxTH.setSelectedItem("00");
+        SaturdayComboBoxTM.setSelectedItem("00");
+        SundayComboBoxFH.setSelectedItem("00");
+        SundayComboBoxFM.setSelectedItem("00");
+        SundayComboBoxTH.setSelectedItem("00");
+        SundayComboBoxTM.setSelectedItem("00");
+        MondayComboBoxFH.setSelectedItem("00");
+        MondayComboBoxFM.setSelectedItem("00");
+        MondayComboBoxTH.setSelectedItem("00");
+        MondayComboBoxTM.setSelectedItem("00");
+        TuesdayComboBoxFH.setSelectedItem("00");
+        TuesdayComboBoxFM.setSelectedItem("00");
+        TuesdayComboBoxTH.setSelectedItem("00");
+        TuesdayComboBoxTM.setSelectedItem("00");
+        WednesdayComboBoxFH.setSelectedItem("00");
+        WednesdayComboBoxFM.setSelectedItem("00");
+        WednesdayComboBoxTH.setSelectedItem("00");
+        WednesdayComboBoxTM.setSelectedItem("00");
+        ThursdayComboBoxFH.setSelectedItem("00");
+        ThursdayComboBoxFM.setSelectedItem("00");
+        ThursdayComboBoxTH.setSelectedItem("00");
+        ThursdayComboBoxTM.setSelectedItem("00");
+        FridayComboBoxFH.setSelectedItem("00");
+        FridayComboBoxFM.setSelectedItem("00");
+        FridayComboBoxTH.setSelectedItem("00");
+        FridayComboBoxTM.setSelectedItem("00");
+        // تعريف وإعداد المصفوفة والقائمة
+        String[] WorkingHours = {};
+        ArrayList<String> workingHoursList = new ArrayList<String>(Arrays.asList(WorkingHours));
+
+// إضافة الأيام العملية وأوقات العمل للقائمة
+        if (jSaturday.isSelected()) {
+            workingHoursList.add("Saturday" );
+            workingHoursList.add(TimeConverter(SaturdayComboBoxFH.getSelectedItem().toString())+":"+(String) SaturdayComboBoxFM.getSelectedItem() + "-" + TimeConverter(SaturdayComboBoxTH.getSelectedItem().toString()) + ":" + (String) SaturdayComboBoxTM.getSelectedItem());
+            System.out.println(TimeConverter(SaturdayComboBoxFH.getSelectedItem().toString())+":"+(String) SaturdayComboBoxFM.getSelectedItem() + "-" + TimeConverter(SaturdayComboBoxTH.getSelectedItem().toString()) + ":" + (String) SaturdayComboBoxTM.getSelectedItem());
+        }
+        if (jSunday.isSelected()) {
+            workingHoursList.add("Sunday");
+            workingHoursList.add(TimeConverter(SundayComboBoxFH.getSelectedItem().toString()) + ":" + (String) SundayComboBoxFM.getSelectedItem() + "-" + TimeConverter(SundayComboBoxTH.getSelectedItem().toString()) + ":" + (String) SundayComboBoxTM.getSelectedItem());
+        }
+        if (jMonday.isSelected()) {
+            workingHoursList.add("Saturday");
+            workingHoursList.add(TimeConverter(MondayComboBoxFH.getSelectedItem().toString()) + ":" + (String) MondayComboBoxFM.getSelectedItem() + "-" + TimeConverter(MondayComboBoxTH.getSelectedItem().toString()) + ":" +(String) MondayComboBoxTM.getSelectedItem());
+        }
+        if (jTuesday.isSelected()) {
+            workingHoursList.add("Saturday");
+            workingHoursList.add(TimeConverter(TuesdayComboBoxFH.getSelectedItem().toString()) + ":" + (String) TuesdayComboBoxFM.getSelectedItem() + "-" + TimeConverter(TuesdayComboBoxTH.getSelectedItem().toString()) + ":" +(String) TuesdayComboBoxTM.getSelectedItem());
+        
+        }
+        if (jWednesday.isSelected()) {
+            workingHoursList.add("Wednesday" );
+            workingHoursList.add(TimeConverter(WednesdayComboBoxFH.getSelectedItem().toString()) + ":" +(String) WednesdayComboBoxFM.getSelectedItem() + "-" + TimeConverter(WednesdayComboBoxTH.getSelectedItem().toString()) + ":" +(String) WednesdayComboBoxTM.getSelectedItem());
+        }
+        if (jThursday.isSelected()) {
+            workingHoursList.add("Thursday");
+            workingHoursList.add(TimeConverter(ThursdayComboBoxFH.getSelectedItem().toString()) + ":" +(String) ThursdayComboBoxFM.getSelectedItem() + "-" + TimeConverter(ThursdayComboBoxTH.getSelectedItem().toString()) + ":" +(String) ThursdayComboBoxTM.getSelectedItem());
+        }
+        if (jFriday.isSelected()) {
+            workingHoursList.add("Friday");
+            workingHoursList.add(TimeConverter(FridayComboBoxFH.getSelectedItem().toString()) + ":" +(String) FridayComboBoxFM.getSelectedItem() + "-" + TimeConverter(FridayComboBoxTH.getSelectedItem().toString()) + ":" +(String) FridayComboBoxTM.getSelectedItem());
+        }
+        String[] WorkingHours3 = workingHoursList.toArray(new String[workingHoursList.size()]);
+
+
+// استرداد مواعيد الأيام وطباعتها بالتنسيق المطلوب
+        
+String[] WorkingHours2={"Saturday", "10:00-13:00", "Sunday", "11:00-13:30"} ;
+
+
+     DSCHEDULE scheduleE = new DSCHEDULE(WorkingHours3);
+     List<String[]> appointments = scheduleE.getAppointments();
+if (appointments.isEmpty()) {
+    System.out.println("No appointments available");
+} else {
+
+
+for (String[] dayAndAppointments : appointments) {
+    System.out.print(dayAndAppointments[0]);
+    for (int i = 1; i < dayAndAppointments.length; i++) {
+        System.out.print(" " + dayAndAppointments[i]);
+    }
+    System.out.println();
+}
+
+}
+    }
+    /////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////التحويل لنظام 24 ساعة/////////////////////////////////////////////////////////////////////
+
+    private String TimeConverter(String H12) {
+        String timeString = H12;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh a", Locale.ENGLISH);
+        LocalTime time = LocalTime.parse(timeString, formatter);
+        String time24hr = time.format(DateTimeFormatter.ofPattern("HH"));
+        System.out.println(time24hr);
+        return time24hr;
+
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////التأكد من المعلومات/////////////////////////////////////////////////////////////////////
     private boolean validateFields() {
         // فحص ما إذا كانت جميع الحقول مملوءة بشكل صحيح
 
@@ -846,9 +966,13 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
         }
         return true;
     }
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> FridayComboBoxFH;
+    private javax.swing.JComboBox<String> FridayComboBoxFM;
+    private javax.swing.JComboBox<String> FridayComboBoxTH;
+    private javax.swing.JComboBox<String> FridayComboBoxTM;
     private javax.swing.JTextField JEmail;
     private javax.swing.JTextField JName;
     private javax.swing.JTextField JPhone;
@@ -878,9 +1002,6 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> WednesdayComboBoxTM;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox27;
-    private javax.swing.JComboBox<String> jComboBox28;
-    private javax.swing.JComboBox<String> jComboBox29;
     private javax.swing.JRadioButton jFriday;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
