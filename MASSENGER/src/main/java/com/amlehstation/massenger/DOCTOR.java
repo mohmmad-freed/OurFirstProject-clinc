@@ -10,7 +10,7 @@ package com.amlehstation.massenger;
  */
 public class DOCTOR extends PERSON {
 
-    
+    private DSCHEDULE s;
    
 
  

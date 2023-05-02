@@ -23,8 +23,6 @@ public class MASSENGER {
         LOGIN_SCREEN L1= new LOGIN_SCREEN();
         L1.show();
        
-        
-        
-
+      
     }
 }
