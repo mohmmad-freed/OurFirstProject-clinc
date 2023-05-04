@@ -207,6 +207,10 @@ public class ADMIN_SCREEN extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        DELD_SCREEN delD=new DELD_SCREEN();
+        dispose();
+        delD.show();
+        delD.setExtendedState(MAXIMIZED_BOTH);
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
