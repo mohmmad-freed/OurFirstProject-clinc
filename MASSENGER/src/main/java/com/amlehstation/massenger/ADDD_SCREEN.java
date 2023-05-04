@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -727,12 +728,13 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
 
+        int doctorId = 0;
         if (validateFields()) {
+
             String phone = JPhone.getText();
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/maindb", "root", "");
-
                 // إجراء فحص للتحقق مما إذا كان الاسم أو الرقم أو البريد الإلكتروني موجودين بالفعل في قاعدة البيانات
                 PreparedStatement checkStmt = con.prepareStatement("SELECT * FROM Doctor WHERE DoName = ? OR DoPhone = ? OR DoEmail = ?");
                 checkStmt.setString(1, JName.getText());
@@ -757,9 +759,19 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
                     insertStmt.setString(2, d.getPhone());
                     insertStmt.setString(3, d.getEmail());
                     insertStmt.setString(4, d.getPass());
-
+                    
                     insertStmt.executeUpdate();
                     insertStmt.close();
+                    String RM = "SELECT DoID FROM doctor WHERE DoPhone = ?";
+                    PreparedStatement SearchDPhone = con.prepareStatement(RM);
+                    SearchDPhone.setString(1, d.getPhone()); // تعيين قيمة رقم الجوال
+                    ResultSet rsM = SearchDPhone.executeQuery(); // تنفيذ الاستعلام واسترجاع النتائج
+                    if (rsM.next()) {
+                        doctorId = rsM.getInt("DoID");
+                        System.out.println("Doctor Id: " + doctorId);
+                    }
+
+                    Schedule(doctorId);
                     dispose();
                     ADMIN_SCREEN a = new ADMIN_SCREEN();
                     a.show();
@@ -830,7 +842,7 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
         });
     }
 
-    private void Schedule() {
+    private void Schedule(int DID) {
         // تعريف وإعداد المصفوفة والقائمة
         String[] WorkingHours = {};
         ArrayList<String> workingHoursList = new ArrayList<String>(Arrays.asList(WorkingHours));
@@ -839,7 +851,6 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
         if (jSaturday.isSelected()) {
             workingHoursList.add("Saturday");
             workingHoursList.add(TimeConverter(SaturdayComboBoxFH.getSelectedItem().toString()) + ":" + (String) SaturdayComboBoxFM.getSelectedItem() + "-" + TimeConverter(SaturdayComboBoxTH.getSelectedItem().toString()) + ":" + (String) SaturdayComboBoxTM.getSelectedItem());
-            System.out.println(TimeConverter(SaturdayComboBoxFH.getSelectedItem().toString()) + ":" + (String) SaturdayComboBoxFM.getSelectedItem() + "-" + TimeConverter(SaturdayComboBoxTH.getSelectedItem().toString()) + ":" + (String) SaturdayComboBoxTM.getSelectedItem());
         }
         if (jSunday.isSelected()) {
             workingHoursList.add("Sunday");
@@ -874,6 +885,32 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
         for (String hour : quarterHours) {
             System.out.println(hour);
 
+        }
+
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/maindb", "root", "");
+            stmt = conn.prepareStatement("INSERT INTO schedule (DoID, DTime, day) VALUES (?, ?, ?)");
+
+            for (int i = 0; i < quarterHours.length; i += 2) {
+                // تحويل الساعة إلى صيغة الوقت المطلوبة (hh:mm:ss)
+                String time = quarterHours[i + 1] + ":00";
+
+                // تعيين قيم الباراميترات
+                stmt.setInt(1, DID);
+                stmt.setString(2, time);
+                stmt.setString(3, quarterHours[i]);
+
+                // إدخال البيانات
+                stmt.executeUpdate();
+            }
+            conn.close();
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
         }
     }
     /////////////////////
