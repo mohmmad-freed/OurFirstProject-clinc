@@ -797,6 +797,8 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
         dispose();
         ADMIN_SCREEN a = new ADMIN_SCREEN();
         a.show();
+        a.setExtendedState(MAXIMIZED_BOTH);
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jSundayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSundayActionPerformed
