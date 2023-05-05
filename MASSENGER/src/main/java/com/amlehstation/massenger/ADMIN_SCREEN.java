@@ -203,6 +203,7 @@ public class ADMIN_SCREEN extends javax.swing.JFrame {
         dispose();
         addd.show();
         addd.setExtendedState(MAXIMIZED_BOTH);
+        
     }//GEN-LAST:event_AddDActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -211,6 +212,7 @@ public class ADMIN_SCREEN extends javax.swing.JFrame {
         dispose();
         delD.show();
         delD.setExtendedState(MAXIMIZED_BOTH);
+        delD.start();
 
     }//GEN-LAST:event_jButton1ActionPerformed
 

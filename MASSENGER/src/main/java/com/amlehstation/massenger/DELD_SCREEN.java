@@ -8,7 +8,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
-
 /**
  *
  * @author ASD
@@ -259,6 +258,9 @@ public class DELD_SCREEN extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        start();
+        
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -294,11 +296,22 @@ public class DELD_SCREEN extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new DELD_SCREEN().setVisible(true);
-            }
-        });
+    public void run() {
+        DELD_SCREEN delScreen = new DELD_SCREEN();
+        delScreen.setVisible(true);
+
+
+
+        // استدعاء الدالة start()
+        delScreen.start();
     }
+});
+     
+    }
+    public void start() {
+    DoctorTable doctorTable = new DoctorTable();
+    jTable2.setModel(doctorTable.getTableModel());
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField JDName;
