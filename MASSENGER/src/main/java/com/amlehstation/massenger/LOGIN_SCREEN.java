@@ -245,7 +245,7 @@ public class LOGIN_SCREEN extends javax.swing.JFrame {
         
         }
         else if(u==5){
-        SECRETARY_SCREEN S= new SECRETARY_SCREEN();
+        NEW_PATIENT_SCREEN S= new NEW_PATIENT_SCREEN();
         dispose();
         S.setExtendedState(MAXIMIZED_BOTH);
         S.show();}
