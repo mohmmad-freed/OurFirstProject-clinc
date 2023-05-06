@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -242,10 +243,9 @@ public class DELD_SCREEN extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         try {
-            dispose();
-            ADMIN_SCREEN a = new ADMIN_SCREEN();
-            a.show();
-            a.setExtendedState(MAXIMIZED_BOTH);
+           ADMIN_SCREEN a = new ADMIN_SCREEN();
+
+        OPENCLOSE.closeAndOpen(this, a);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e);
         }
@@ -256,27 +256,27 @@ public class DELD_SCREEN extends javax.swing.JFrame {
         // TODO add your handling code here:
 
      
-        try {
-            
-            DoctorTable doctorTable = new DoctorTable();
-            DoctorTablee.setModel(doctorTable.getTableModelByPhone(JDPhone.getText()));
+       try {
+    DoctorTable doctorTable = new DoctorTable();
+    DoctorTablee.setModel(doctorTable.getTableModelByName(JDName.getText()));
+} catch (Exception e) {
+    JOptionPane.showMessageDialog(this, e);
+}
 
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e);
-        }
 
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        try {
-            DoctorTable doctorTable = new DoctorTable();
-            DoctorTablee.setModel(doctorTable.getTableModelByName(JDName.getText()));
+        try {            
+    DoctorTable doctorTable = new DoctorTable();
+    DefaultTableModel model = doctorTable.getTableModelByPhone(JDPhone.getText());
+    DoctorTablee.setModel(model);
+} catch (Exception e) {
+    JOptionPane.showMessageDialog(this, e);
+}
 
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e);
-        }
 
 
     }//GEN-LAST:event_jButton3ActionPerformed

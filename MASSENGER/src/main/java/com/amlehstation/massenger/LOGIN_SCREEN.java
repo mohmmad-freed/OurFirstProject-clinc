@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.text.html.parser.AttributeList;
+
 /**
  *
  * @author ASD
@@ -228,30 +229,24 @@ public class LOGIN_SCREEN extends javax.swing.JFrame {
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
         // TODO add your handling code here:
-        int u=checkUser();
-        if(u==2||u==3){
-        ADMIN_SCREEN AdminS= new ADMIN_SCREEN();
-        dispose();
-        AdminS.setExtendedState(MAXIMIZED_BOTH);
-        AdminS.show();
+        int u=0;
+        u = checkUser();
+        if (u == 2) {
+
+            SECRETARY_SCREEN a = new SECRETARY_SCREEN();
+        OPENCLOSE.closeAndOpen(this, a);
+        } else if (u == 3) {
+
+            DOCTOR_SCREEN a = new DOCTOR_SCREEN();
+        OPENCLOSE.closeAndOpen(this, a);
+
+        } else if (u == 4) {
+
+            ADMIN_SCREEN a = new ADMIN_SCREEN();
+        OPENCLOSE.closeAndOpen(this, a);
+            
         }
-        
-        
-        else if(u==4){
-        DOCTOR_SCREEN DoctorS= new DOCTOR_SCREEN();
-        dispose();
-        DoctorS.setExtendedState(MAXIMIZED_BOTH);
-        DoctorS.show();
-        
-        }
-        else if(u==5){
-        NEW_PATIENT_SCREEN S= new NEW_PATIENT_SCREEN();
-        dispose();
-        S.setExtendedState(MAXIMIZED_BOTH);
-        S.show();}
-        
-        
-        
+
     }//GEN-LAST:event_loginActionPerformed
 
     private void passwordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFocusGained
@@ -266,8 +261,8 @@ public class LOGIN_SCREEN extends javax.swing.JFrame {
 
     private void passwordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passwordMouseClicked
         // TODO add your handling code here: if (jPasswordField1.getText().equals("Default Text")) {
-    password.setText("");
-        
+        password.setText("");
+
 
     }//GEN-LAST:event_passwordMouseClicked
 
@@ -302,45 +297,45 @@ public class LOGIN_SCREEN extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new LOGIN_SCREEN().setVisible(true);
-                
+
             }
         });
     }
-    public int checkUser(){
 
-        String userName1=userName.getText();
+    public int checkUser() {
+
+        String userName1 = userName.getText();
         String pass = new String(password.getPassword());
-                            
-        if(userName1.isEmpty() || pass.isEmpty()){
-            JOptionPane.showMessageDialog(this,"Phone/password should not be empty please try again","Empty",JOptionPane.ERROR_MESSAGE);
-        return 0;
-        
-        }
-        else{
+
+        if (userName1.isEmpty() || pass.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Phone/password should not be empty please try again", "Empty", JOptionPane.ERROR_MESSAGE);
+            return 0;
+
+        } else {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/maindb","root","");
-                String sql="Select * from users where mobile=? and password=? ";
-                PreparedStatement pst=con.prepareStatement(sql);
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/maindb", "root", "");
+                String sqlS = "Select * from secrtary where SePhone=? and SePass=? ";
+                PreparedStatement pst = con.prepareStatement(sqlS);
                 pst.setString(1, userName1);
                 pst.setString(2, pass);
-                ResultSet rs=pst.executeQuery();
-                if(rs.next()){
-                    if(rs.getString("role").equals("admin")){
+                ResultSet rsS = pst.executeQuery();
+                String sqlD = "Select * from doctor where DoPhone=? and DoPass=? ";
+                pst = con.prepareStatement(sqlD);
+                pst.setString(1, userName1);
+                pst.setString(2, pass);
+                ResultSet rsD = pst.executeQuery();
+                String sqlA = "Select * from users where mobile=? and password=? ";
+                pst = con.prepareStatement(sqlA);
+                pst.setString(1, userName1);
+                pst.setString(2, pass);
+                ResultSet rsA = pst.executeQuery();
+                if (rsS.next()) {
                     return 2;
-                    }
-                    else if(rs.getString("role").equals("coAdmin")){
+                } else if (rsD.next()) {
                     return 3;
-                    }
-                    else if(rs.getString("role").equals("Doctor")){
+                } else if (rsA.next()) {
                     return 4;
-                    }
-                    else{
-                    return 5;
-                    }
-                    
-
-                    
                 } else {
 
                     JOptionPane.showMessageDialog(this, "wrong pass and username");
@@ -353,7 +348,7 @@ public class LOGIN_SCREEN extends javax.swing.JFrame {
             }
         }
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.Box.Filler filler1;

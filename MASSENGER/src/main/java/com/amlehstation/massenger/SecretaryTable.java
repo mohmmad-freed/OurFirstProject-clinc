@@ -4,22 +4,20 @@
  */
 package com.amlehstation.massenger;
 
-/**
- *
- * @author ASD
- */
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class DoctorTable {
-    
-   public DefaultTableModel getTableModel() {
+/**
+ *
+ * @author ASD
+ */
+public class SecretaryTable {
+    public DefaultTableModel getTableModel() {
       DefaultTableModel model = null;
       try {
          // تحديد اسم قاعدة البيانات ومعلومات الاتصال
@@ -32,7 +30,7 @@ public class DoctorTable {
          Connection conn = DriverManager.getConnection(url, user, password);
          
          // إنشاء عبارة SQL لاسترداد بيانات DoName و DoPhone و DoEmail
-         String query = "SELECT DoName, DoPhone, DoEmail FROM doctor";
+         String query = "SELECT SeName, SePhone, SeEmail FROM secrtary";
          
          // إنشاء عبارة Statement وتنفيذ الاستعلام
          Statement stmt = conn.createStatement();
@@ -43,9 +41,9 @@ public class DoctorTable {
          
          // استرداد البيانات وإضافتها إلى DefaultTableModel
          while (rs.next()) {
-            String doName = rs.getString("DoName");
-            String doPhone = rs.getString("DoPhone");
-            String doEmail = rs.getString("DoEmail");
+            String doName = rs.getString("SeName");
+            String doPhone = rs.getString("SePhone");
+            String doEmail = rs.getString("SeEmail");
             model.addRow(new Object[]{doName, doPhone, doEmail});
          }
          
@@ -160,7 +158,5 @@ public DefaultTableModel getTableModelByPhone(String phone) {
     return model;
 }
 
-
-
+    
 }
-
