@@ -15,10 +15,18 @@ public class OPENCLOSE {
         frameToClose.dispose();
         frameToOpen.setVisible(true);
         frameToOpen.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        
         if(frameToOpen instanceof ADMIN_SCREEN) {
             ((ADMIN_SCREEN) frameToOpen).start();
+            ((ADMIN_SCREEN) frameToOpen).startS();
         }
-        else if(frameToOpen instanceof ADMIN_SCREEN){}
+        else if(frameToOpen instanceof ADDD_SCREEN){}
+        else if(frameToOpen instanceof DELD_SCREEN){
+        ((DELD_SCREEN) frameToOpen).start();
+        }
+        else if(frameToOpen instanceof SECRETARY_SCREEN){}
+        else if(frameToOpen instanceof DOCTOR_SCREEN){}
+        else if(frameToOpen instanceof LOGIN_SCREEN){}
     }
     
 }

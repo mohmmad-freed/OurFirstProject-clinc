@@ -232,21 +232,18 @@ public class LOGIN_SCREEN extends javax.swing.JFrame {
         int u=0;
         u = checkUser();
         if (u == 2) {
-            SECRETARY_SCREEN S = new SECRETARY_SCREEN();
-            dispose();
-            S.setExtendedState(MAXIMIZED_BOTH);
-            S.show();
+
+            SECRETARY_SCREEN a = new SECRETARY_SCREEN();
+        OPENCLOSE.closeAndOpen(this, a);
         } else if (u == 3) {
-            DOCTOR_SCREEN DoctorS = new DOCTOR_SCREEN();
-            dispose();
-            DoctorS.setExtendedState(MAXIMIZED_BOTH);
-            DoctorS.show();
+
+            DOCTOR_SCREEN a = new DOCTOR_SCREEN();
+        OPENCLOSE.closeAndOpen(this, a);
 
         } else if (u == 4) {
-            ADMIN_SCREEN AdminS = new ADMIN_SCREEN();
-            dispose();
-            AdminS.setExtendedState(MAXIMIZED_BOTH);
-            AdminS.show();
+
+            ADMIN_SCREEN a = new ADMIN_SCREEN();
+        OPENCLOSE.closeAndOpen(this, a);
             
         }
 
