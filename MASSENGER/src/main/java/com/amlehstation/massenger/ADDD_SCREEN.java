@@ -17,6 +17,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
+
 /**
  *
  * @author ASD
@@ -794,10 +795,13 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        dispose();
+        
+
+//        dispose();
         ADMIN_SCREEN a = new ADMIN_SCREEN();
-        a.show();
-        a.setExtendedState(MAXIMIZED_BOTH);
+//        a.show();
+//        a.setExtendedState(MAXIMIZED_BOTH);
+        OPENCLOSE.closeAndOpen(this, a);
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
