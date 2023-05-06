@@ -8,59 +8,40 @@ package com.amlehstation.massenger;
  *
  * @author msamalq
  */
-
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Random;
 
 public class DSCHEDULE {
-    private final String[] days;
-    private final int[] startTimes;
-    private final int[] endTimes;
-    private final int[] appointmentCounts;
-
-    public DSCHEDULE(String[] schedule) {
-        int numDays = schedule.length / 2;
-        days = new String[numDays];
-        startTimes = new int[numDays];
-        endTimes = new int[numDays];
-        appointmentCounts = new int[numDays];
-
-        // Parse the schedule array
-        for (int i = 0; i < numDays; i++) {
-            days[i] = schedule[i * 2];
-            String[] times = schedule[i * 2 + 1].split(":");
-            startTimes[i] = Integer.parseInt(times[0]) * 60 + Integer.parseInt(times[1].substring(0, 2));
-            endTimes[i] = Integer.parseInt(times[2]) * 60 + Integer.parseInt(times[3]);
-            appointmentCounts[i] = (endTimes[i] - startTimes[i]) / 15;
-        }
-    }
-
-    public String[][] getAppointments() {
-        String[][] appointments = new String[days.length][];
-        for (int i = 0; i < days.length; i++) {
-            int numAppointments = appointmentCounts[i];
-            String[] apps = new String[numAppointments];
-            int startTime = startTimes[i];
-            for (int j = 0; j < numAppointments; j++) {
-                int hours = startTime / 60;
-                int minutes = startTime % 60;
-                String hourStr = (hours < 10) ? "0" + hours : "" + hours;
-                String minuteStr = (minutes < 10) ? "0" + minutes : "" + minutes;
-                apps[j] = hourStr + ":" + minuteStr;
-                startTime += 15;
+    public String[] convertToQuarterHours(String[] workingHours) {
+        ArrayList<String> quarterHoursList = new ArrayList<String>();
+        for (int i = 0; i < workingHours.length; i += 2) {
+            String day = workingHours[i];
+            String[] startHourParts = workingHours[i + 1].split(":");
+            int startHour = Integer.parseInt(startHourParts[0]);
+            int startMinute = Integer.parseInt(startHourParts[1].split("-")[0]);
+            String[] endHourParts = workingHours[i + 1].split("-")[1].split(":");
+            int endHour = Integer.parseInt(endHourParts[0]);
+            int endMinute = Integer.parseInt(endHourParts[1]);
+            for (int hour = startHour; hour <= endHour; hour++) {
+                for (int minute = 0; minute < 60; minute += 15) {
+                    if (hour == startHour && minute < startMinute) {
+                        continue;
+                    }
+                    if (hour == endHour && minute > endMinute) {
+                        continue;
+                    }
+                    quarterHoursList.add(day);
+                    String hourString = (hour < 10) ? "0" + hour : "" + hour;
+                    String minuteString = (minute < 10) ? "0" + minute : "" + minute;
+                    quarterHoursList.add(hourString + ":" + minuteString);
+                }
             }
-            appointments[i] = new String[]{days[i], String.join(" ", apps)};
         }
-        return appointments;
-    }
-
-    public static void main(String[] args) {
-        String[] schedule = {"Saturday","10:00-13:00","Sunday","11:00-13:30"};
-        DSCHEDULE ds = new DSCHEDULE(schedule);
-        String[][] appointments = ds.getAppointments();
-        for (String[] app : appointments) {
-            System.out.println(app[0] + " " + app[1]);
-        }
+        return quarterHoursList.toArray(new String[quarterHoursList.size()]);
     }
 }
