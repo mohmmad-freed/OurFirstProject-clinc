@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 01 مايو 2023 الساعة 23:07
+-- Generation Time: 07 مايو 2023 الساعة 00:18
 -- إصدار الخادم: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -50,6 +50,13 @@ CREATE TABLE `doctor` (
   `DoEmail` varchar(40) NOT NULL,
   `DoPass` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- إرجاع أو استيراد بيانات الجدول `doctor`
+--
+
+INSERT INTO `doctor` (`DoID`, `DoName`, `DoPhone`, `DoEmail`, `DoPass`) VALUES
+(37, 'mohammad Fareed', '0598227364', 'mbdalmnm05@gmail.com', '1235789');
 
 -- --------------------------------------------------------
 
@@ -163,7 +170,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `doctor`
 --
 ALTER TABLE `doctor`
-  MODIFY `DoID` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `DoID` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `patients`
