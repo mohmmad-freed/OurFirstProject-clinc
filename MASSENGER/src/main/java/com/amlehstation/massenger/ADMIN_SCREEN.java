@@ -212,29 +212,28 @@ public class ADMIN_SCREEN extends javax.swing.JFrame {
 
     private void AddDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddDActionPerformed
         // TODO add your handling code here:
-        ADDD_SCREEN addd=new ADDD_SCREEN();
+        ADDD_SCREEN addd = new ADDD_SCREEN();
         dispose();
         addd.show();
         addd.setExtendedState(MAXIMIZED_BOTH);
-        
+
     }//GEN-LAST:event_AddDActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
+
         try {
-            
-            DELD_SCREEN delD=new DELD_SCREEN();
-        
-        
+
+            DELD_SCREEN delD = new DELD_SCREEN();
+
             delD.start();
             dispose();
             delD.setExtendedState(MAXIMIZED_BOTH);
-        delD.show();
+            delD.show();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e);
         }
-        
+
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -275,23 +274,29 @@ public class ADMIN_SCREEN extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 ADMIN_SCREEN admin = new ADMIN_SCREEN();
-        admin.setVisible(true);
+                admin.setVisible(true);
 
-
-
-        // استدعاء الدالة start()
-        admin.start();
+                // استدعاء الدالة start()
+                admin.start();
             }
         });
     }
+
     public void start() {
-    DoctorTable doctorTable = new DoctorTable();
-    DoctorTable.setModel(doctorTable.getTableModel());
-}
+        DoctorTable doctorTable = new DoctorTable();
+        DoctorTable.setModel(doctorTable.getTableModel());
+    }
+
     public void startS() {
-    SecretaryTable secretaryTable = new SecretaryTable();
-    SecretaryTablee.setModel(secretaryTable.getTableModel());
-}
+
+        try {
+            SecretaryTable secretaryTable = new SecretaryTable();
+            SecretaryTablee.setModel(secretaryTable.getTableModel());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
+
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddD;
