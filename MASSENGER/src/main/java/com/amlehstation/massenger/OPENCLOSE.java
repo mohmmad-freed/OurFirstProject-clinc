@@ -27,6 +27,9 @@ public class OPENCLOSE {
         else if(frameToOpen instanceof SECRETARY_SCREEN){}
         else if(frameToOpen instanceof DOCTOR_SCREEN){}
         else if(frameToOpen instanceof LOGIN_SCREEN){}
+        else if (frameToOpen instanceof OLD_PATIENT_SCREEN){
+        ((OLD_PATIENT_SCREEN) frameToOpen).start();
+        }
     }
     
 }
