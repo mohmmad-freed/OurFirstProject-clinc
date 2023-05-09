@@ -43,7 +43,7 @@ public class NEW_PATIENT_SCREEN extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        PatientTablee = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
 
@@ -176,7 +176,7 @@ public class NEW_PATIENT_SCREEN extends javax.swing.JFrame {
                 .addContainerGap(83, Short.MAX_VALUE))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        PatientTablee.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -192,7 +192,7 @@ public class NEW_PATIENT_SCREEN extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(PatientTablee);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -326,10 +326,16 @@ public class NEW_PATIENT_SCREEN extends javax.swing.JFrame {
             }
         });
     }
+    public void start(){
+    SecretaryTable s=new SecretaryTable();
+    PatientTablee.setModel(s.getTableModel());
+    
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddButton;
     private javax.swing.JButton CancelButton;
+    private javax.swing.JTable PatientTablee;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
     private com.toedter.calendar.JDateChooser jDateChooser1;
@@ -344,7 +350,6 @@ public class NEW_PATIENT_SCREEN extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField nameTextField;
     private javax.swing.JTextField nameTextField1;
     private javax.swing.JTextField nameTextField2;
