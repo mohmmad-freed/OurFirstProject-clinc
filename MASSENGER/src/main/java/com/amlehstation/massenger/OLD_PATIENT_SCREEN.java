@@ -31,7 +31,7 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        PatientTablee = new javax.swing.JTable();
         UpdateButton = new javax.swing.JButton();
         RemoveRowButton = new javax.swing.JButton();
         CancelButton = new javax.swing.JButton();
@@ -71,7 +71,7 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
                 .addGap(36, 36, 36))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        PatientTablee.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -87,7 +87,7 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(PatientTablee);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -240,9 +240,7 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 17, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -328,10 +326,17 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
             }
         });
     }
+    public void start(){
+    SecretaryTable s=new SecretaryTable();
+    PatientTablee.setModel(s.getTableModel());
+    
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddDateButton;
     private javax.swing.JButton CancelButton;
+    private javax.swing.JTable PatientTablee;
     private javax.swing.JButton RemoveRowButton;
     private javax.swing.JButton UpdateButton;
     private javax.swing.JButton jButton1;
@@ -349,7 +354,6 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
