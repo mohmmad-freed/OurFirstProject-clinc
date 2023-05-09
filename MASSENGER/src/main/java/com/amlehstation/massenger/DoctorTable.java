@@ -73,9 +73,10 @@ public DefaultTableModel getTableModelByName(String name) {
 
         // إنشاء اتصال بقاعدة البيانات
         Connection conn = DriverManager.getConnection(url, user, password);
+        name +="%";
 
         // إنشاء عبارة SQL لاسترداد بيانات DoName وDoPhone وDoEmail
-        String query = "SELECT DoName, DoPhone, DoEmail FROM doctor WHERE DoName = ?";
+        String query = "SELECT DoName, DoPhone, DoEmail FROM doctor WHERE DoName LIKE ?";
         PreparedStatement pst = conn.prepareStatement(query);
         pst.setString(1, name);
 
@@ -123,8 +124,8 @@ public DefaultTableModel getTableModelByPhone(String phone) {
         // إنشاء اتصال بقاعدة البيانات
         Connection conn = DriverManager.getConnection(url, user, password);
 
-        // إنشاء عبارة SQL لاسترداد بيانات DoName وDoPhone وDoEmail
-        String query = "SELECT DoName, DoPhone, DoEmail FROM doctor WHERE DoPhone = ?";
+        phone +="%";
+        String query = "SELECT DoName, DoPhone, DoEmail FROM doctor WHERE DoPhone LIKE ?";
         PreparedStatement pst = conn.prepareStatement(query);
         pst.setString(1, phone);
 
