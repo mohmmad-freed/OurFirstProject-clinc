@@ -12,12 +12,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author ASD
  */
-public class DateDetails {
+public class DateDetailTable {
     private String dbURL;
     private String username;
     private String password;
 
-    public DateDetails(String dbURL, String username, String password) {
+    public DateDetailTable(String dbURL, String username, String password) {
         this.dbURL = dbURL;
         this.username = username;
         this.password = password;

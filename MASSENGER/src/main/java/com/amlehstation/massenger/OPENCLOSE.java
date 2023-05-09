@@ -24,12 +24,17 @@ public class OPENCLOSE {
         else if(frameToOpen instanceof DELD_SCREEN){
         ((DELD_SCREEN) frameToOpen).start();
         }
-        else if(frameToOpen instanceof SECRETARY_SCREEN){}
+        else if(frameToOpen instanceof SECRETARY_SCREEN){
+            ((SECRETARY_SCREEN)frameToOpen).start();
+        }
         else if(frameToOpen instanceof DOCTOR_SCREEN){}
         else if(frameToOpen instanceof LOGIN_SCREEN){}
         else if (frameToOpen instanceof OLD_PATIENT_SCREEN){
         ((OLD_PATIENT_SCREEN) frameToOpen).start();
+        
         }
+        else if (frameToOpen instanceof NEW_PATIENT_SCREEN){
+        ((NEW_PATIENT_SCREEN)frameToOpen).start();}
     }
     
 }

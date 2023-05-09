@@ -33,7 +33,7 @@ public class SECRETARY_SCREEN extends javax.swing.JFrame {
         NewButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        PatientTablee = new javax.swing.JTable();
         LogOutButton = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -101,7 +101,7 @@ public class SECRETARY_SCREEN extends javax.swing.JFrame {
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        PatientTablee.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -117,7 +117,7 @@ public class SECRETARY_SCREEN extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(PatientTablee);
 
         LogOutButton.setFont(new java.awt.Font("Yu Gothic", 3, 18)); // NOI18N
         LogOutButton.setText("Log out");
@@ -252,11 +252,16 @@ public class SECRETARY_SCREEN extends javax.swing.JFrame {
             }
         });
     }
+    public void start(){
+    DateDetailTable s=new DateDetailTable("jdbc:mysql://localhost:3306/maindb","root","");
+    PatientTablee.setModel(s.getDateDetails());
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton LogOutButton;
     private javax.swing.JButton NewButton;
     private javax.swing.JButton OldButton;
+    private javax.swing.JTable PatientTablee;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
@@ -264,6 +269,5 @@ public class SECRETARY_SCREEN extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

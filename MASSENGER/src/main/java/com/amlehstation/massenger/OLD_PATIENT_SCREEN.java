@@ -330,8 +330,8 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
         });
     }
     public void start(){
-    SecretaryTable s=new SecretaryTable();
-    PatientTablee.setModel(s.getTableModel());
+    DateDetailTable s=new DateDetailTable("jdbc:mysql://localhost:3306/maindb","root","");
+    PatientTablee.setModel(s.getDateDetails());
     
     }
     
