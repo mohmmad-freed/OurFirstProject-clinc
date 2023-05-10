@@ -53,6 +53,7 @@ com\amlehstation\massenger\LOGIN_SCREEN.class
 com\amlehstation\massenger\DATE.class
 com\amlehstation\massenger\DoctorTable$1.class
 com\amlehstation\massenger\ADDD_SCREEN$17.class
+com\amlehstation\massenger\MyLogger.class
 com\amlehstation\massenger\ADMIN_SCREEN$2.class
 com\amlehstation\massenger\DELD_SCREEN.class
 com\amlehstation\massenger\SECRETARY.class

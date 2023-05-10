@@ -4,6 +4,7 @@
  */
 package com.amlehstation.massenger;
 
+
 /**
  *
  * @author msamalq
@@ -13,10 +14,9 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
     /**
      * Creates new form OLD_PATIENT_SCREEN
      */
-    public OLD_PATIENT_SCREEN() {
-        initComponents();
-    }
-
+   public OLD_PATIENT_SCREEN(){
+   initComponents();
+   }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -326,7 +326,7 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
     }//GEN-LAST:event_RemoveRowButtonActionPerformed
 
     private void AddDateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddDateButtonActionPerformed
-        // TODO add your handling code here:
+Logger.log("add new appointment");       // TODO add your handling code here:
     }//GEN-LAST:event_AddDateButtonActionPerformed
 
     private void TimeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TimeComboBoxActionPerformed
