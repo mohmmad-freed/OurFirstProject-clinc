@@ -5,6 +5,12 @@
 package com.amlehstation.massenger;
 
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
+
+
 /**
  *
  * @author msamalq
@@ -14,9 +20,15 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
     /**
      * Creates new form OLD_PATIENT_SCREEN
      */
-   public OLD_PATIENT_SCREEN(){
-   initComponents();
-   }
+
+   
+
+    public OLD_PATIENT_SCREEN() {
+        initComponents();
+    }
+
+    String DN;
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -49,7 +61,7 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         AddDateButton = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        JDocNames = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -161,6 +173,39 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
             }
         });
 
+        jDateChooser1.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jDateChooser1AncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+                jDateChooser1AncestorMoved(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        jDateChooser1.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentMoved(java.awt.event.ComponentEvent evt) {
+                jDateChooser1ComponentMoved(evt);
+            }
+        });
+        jDateChooser1.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+                jDateChooser1CaretPositionChanged(evt);
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+            }
+        });
+        jDateChooser1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jDateChooser1PropertyChange(evt);
+            }
+        });
+        jDateChooser1.addVetoableChangeListener(new java.beans.VetoableChangeListener() {
+            public void vetoableChange(java.beans.PropertyChangeEvent evt)throws java.beans.PropertyVetoException {
+                jDateChooser1VetoableChange(evt);
+            }
+        });
+
         AddDateButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         AddDateButton.setText("Add Date");
         AddDateButton.addActionListener(new java.awt.event.ActionListener() {
@@ -171,7 +216,17 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
 
         jLabel7.setText("Doctor :");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "doctor" }));
+        JDocNames.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "doctor" }));
+        JDocNames.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JDocNamesMouseClicked(evt);
+            }
+        });
+        JDocNames.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JDocNamesActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -182,8 +237,7 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(292, 292, 292)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
@@ -197,8 +251,8 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton2)
-                            .addComponent(jButton1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)))
+                            .addComponent(jButton1))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -215,7 +269,7 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
                 .addGap(176, 176, 176)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(JDocNames, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -251,7 +305,7 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JDocNames, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
 
@@ -313,7 +367,7 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void CancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelButtonActionPerformed
-      SECRETARY_SCREEN SecSC =new SECRETARY_SCREEN();
+        SECRETARY_SCREEN SecSC = new SECRETARY_SCREEN();
         OPENCLOSE.closeAndOpen(this, SecSC);
     }//GEN-LAST:event_CancelButtonActionPerformed
 
@@ -326,12 +380,91 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
     }//GEN-LAST:event_RemoveRowButtonActionPerformed
 
     private void AddDateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddDateButtonActionPerformed
+
 Logger.log("add new appointment");       // TODO add your handling code here:
+
+        // TODO add your handling code here:
+
+
     }//GEN-LAST:event_AddDateButtonActionPerformed
 
     private void TimeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TimeComboBoxActionPerformed
-if(!(TimeComboBox.getSelectedItem().equals("Time"))){ AddDateButton.setEnabled(true);}
+        if (!(TimeComboBox.getSelectedItem().equals("Time"))) {
+            AddDateButton.setEnabled(true);
+        }
+        if ((TimeComboBox.getSelectedItem().equals("Time"))) {
+            AddDateButton.setEnabled(false);
+        }
     }//GEN-LAST:event_TimeComboBoxActionPerformed
+
+    private void JDocNamesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JDocNamesActionPerformed
+        // TODO add your handling code here:
+
+        jDateChooser1.setCalendar(null);
+        AddDateButton.setEnabled(false);
+        TimeComboBox.setSelectedItem("Time");
+
+    }//GEN-LAST:event_JDocNamesActionPerformed
+
+    private void JDocNamesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JDocNamesMouseClicked
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_JDocNamesMouseClicked
+
+    private void jDateChooser1AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jDateChooser1AncestorAdded
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_jDateChooser1AncestorAdded
+
+    private void jDateChooser1AncestorMoved(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jDateChooser1AncestorMoved
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_jDateChooser1AncestorMoved
+
+    private void jDateChooser1ComponentMoved(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jDateChooser1ComponentMoved
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jDateChooser1ComponentMoved
+
+    private void jDateChooser1CaretPositionChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jDateChooser1CaretPositionChanged
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_jDateChooser1CaretPositionChanged
+
+    private void jDateChooser1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jDateChooser1PropertyChange
+        // TODO add your handling code here:
+        Date selectedDate = jDateChooser1.getDate();
+        String selectedDocName = (String) JDocNames.getSelectedItem();
+
+        if (selectedDate != null && selectedDocName != null) {
+            SimpleDateFormat dayFormat = new SimpleDateFormat("EEEE", new Locale("en"));
+            String dayName = dayFormat.format(selectedDate);
+            System.out.println("اسم اليوم: " + dayName);
+            AddDateButton.setEnabled(false);
+
+            TimeComboBox.setSelectedItem("Time");
+            int itemCount = TimeComboBox.getItemCount();
+            for (int i = itemCount - 1; i > 0; i--) {
+                TimeComboBox.removeItemAt(i);
+            }
+            FArr F = new FArr();
+            ArrayList<String> AT = F.getDoctorAvailable(selectedDate.toString(), selectedDocName.toString(), dayName);
+
+            if (!AT.isEmpty()) {
+                for (String Ava : AT) {
+                    TimeComboBox.addItem(Ava);
+                }
+            }
+        } else {
+            System.out.println("تاريخ أو اسم الطبيب المحدد غير صالح");
+        }
+
+
+    }//GEN-LAST:event_jDateChooser1PropertyChange
+
+    private void jDateChooser1VetoableChange(java.beans.PropertyChangeEvent evt)throws java.beans.PropertyVetoException {//GEN-FIRST:event_jDateChooser1VetoableChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jDateChooser1VetoableChange
 
     /**
      * @param args the command line arguments
@@ -367,17 +500,25 @@ if(!(TimeComboBox.getSelectedItem().equals("Time"))){ AddDateButton.setEnabled(t
             }
         });
     }
-    public void start(){
-    DateDetailTable s=new DateDetailTable("jdbc:mysql://localhost:3306/maindb","root","");
-    PatientTablee.setModel(s.getDateDetails());
-    AddDateButton.setEnabled(false);
+
+    public void start() {
+        DateDetailTable s = new DateDetailTable("jdbc:mysql://localhost:3306/maindb", "root", "");
+        PatientTablee.setModel(s.getDateDetails());
+        AddDateButton.setEnabled(false);
+        NameDoArr d = new NameDoArr();
+        ArrayList<String> sn = new ArrayList<>();
+        sn = d.getDoctorNames();
+        JDocNames.removeAllItems();
+        for (String name : sn) {
+            JDocNames.addItem(name);
+        }
     }
-    
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddDateButton;
     private javax.swing.JButton CancelButton;
+    private javax.swing.JComboBox<String> JDocNames;
     private javax.swing.JTextField NameTextField;
     private javax.swing.JTable PatientTablee;
     private javax.swing.JTextField PhoneTextField;
@@ -386,7 +527,6 @@ if(!(TimeComboBox.getSelectedItem().equals("Time"))){ AddDateButton.setEnabled(t
     private javax.swing.JButton UpdateButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox2;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
