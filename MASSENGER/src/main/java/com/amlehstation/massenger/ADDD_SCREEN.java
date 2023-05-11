@@ -787,6 +787,7 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, e);
             }
+            Logger.log("added new Doctor:   name: "+JName.getText()+"  Phone: "+JPhone.getText()+" Email: "+JEmail.getText());
 
         }
 

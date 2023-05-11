@@ -376,7 +376,7 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
     }//GEN-LAST:event_NameTextFieldActionPerformed
 
     private void RemoveRowButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveRowButtonActionPerformed
-        // TODO add your handling code here:
+Logger.log("removed appiontment ");        // TODO add your handling code here:
     }//GEN-LAST:event_RemoveRowButtonActionPerformed
 
     private void AddDateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddDateButtonActionPerformed
