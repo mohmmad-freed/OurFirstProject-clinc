@@ -20,3 +20,7 @@ INFO: added new appiontment
 [2023-05-11 15:25:56] add new appointment
 [2023-05-11 15:53:00] add new appointment
 [2023-05-11 15:54:28] add new appointment
+[2023-05-11 17:14:47]  test confirm
+[2023-05-11 17:26:57]  new appiontment:  Doctor:   Date: Sat May 06 00:00:00 IDT 2023  Time: 8:00
+[2023-05-11 17:39:50] new patient appiontment:  Name: mohammad samer  phone: 0594073156  Doctor: mohFareed
+Date: Sat May 06 17:39:43 IDT 2023  Time8:00

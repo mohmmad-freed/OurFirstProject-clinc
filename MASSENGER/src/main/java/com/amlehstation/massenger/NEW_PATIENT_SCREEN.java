@@ -38,8 +38,8 @@ public class NEW_PATIENT_SCREEN extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         nameTextField = new javax.swing.JTextField();
-        nameTextField2 = new javax.swing.JTextField();
-        nameTextField1 = new javax.swing.JTextField();
+        PhoneTextField = new javax.swing.JTextField();
+        DoctorTextField = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -55,7 +55,7 @@ public class NEW_PATIENT_SCREEN extends javax.swing.JFrame {
 
         jLabel4.setText("Time :");
 
-        TimeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "8:00" }));
+        TimeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Time", "8:00" }));
         TimeComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TimeComboBoxActionPerformed(evt);
@@ -90,15 +90,15 @@ public class NEW_PATIENT_SCREEN extends javax.swing.JFrame {
             }
         });
 
-        nameTextField2.addActionListener(new java.awt.event.ActionListener() {
+        PhoneTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nameTextField2ActionPerformed(evt);
+                PhoneTextFieldActionPerformed(evt);
             }
         });
 
-        nameTextField1.addActionListener(new java.awt.event.ActionListener() {
+        DoctorTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nameTextField1ActionPerformed(evt);
+                DoctorTextFieldActionPerformed(evt);
             }
         });
 
@@ -120,8 +120,8 @@ public class NEW_PATIENT_SCREEN extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(nameTextField)
-                            .addComponent(nameTextField2)
-                            .addComponent(nameTextField1))
+                            .addComponent(PhoneTextField)
+                            .addComponent(DoctorTextField))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(AddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -150,9 +150,9 @@ public class NEW_PATIENT_SCREEN extends javax.swing.JFrame {
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(nameTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(PhoneTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(nameTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(DoctorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -271,11 +271,16 @@ public class NEW_PATIENT_SCREEN extends javax.swing.JFrame {
     }//GEN-LAST:event_nameTextFieldActionPerformed
 
     private void TimeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TimeComboBoxActionPerformed
-if(!(TimeComboBox.getSelectedItem().equals("Time"))){ AddButton.setEnabled(true);}        // TODO add your handling code here:
+if (!(TimeComboBox.getSelectedItem().equals("Time"))) {
+            AddButton.setEnabled(true);
+        }
+        if ((TimeComboBox.getSelectedItem().equals("Time"))) {
+            AddButton.setEnabled(false);
+        }       
     }//GEN-LAST:event_TimeComboBoxActionPerformed
 
     private void AddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButtonActionPerformed
-      
+Logger.log("new patient appiontment:  Name: "+nameTextField.getText()+"  phone: "+PhoneTextField.getText()+"  Doctor: "+DoctorTextField.getText()+"\nDate: "+jDateChooser1.getDate()+"  Time: "+TimeComboBox.getSelectedItem());
     }//GEN-LAST:event_AddButtonActionPerformed
 
     private void CancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelButtonActionPerformed
@@ -283,13 +288,13 @@ if(!(TimeComboBox.getSelectedItem().equals("Time"))){ AddButton.setEnabled(true)
      OPENCLOSE.closeAndOpen(this, SecScreen);
     }//GEN-LAST:event_CancelButtonActionPerformed
 
-    private void nameTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTextField1ActionPerformed
+    private void DoctorTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DoctorTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nameTextField1ActionPerformed
+    }//GEN-LAST:event_DoctorTextFieldActionPerformed
 
-    private void nameTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTextField2ActionPerformed
+    private void PhoneTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PhoneTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nameTextField2ActionPerformed
+    }//GEN-LAST:event_PhoneTextFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -335,7 +340,9 @@ if(!(TimeComboBox.getSelectedItem().equals("Time"))){ AddButton.setEnabled(true)
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddButton;
     private javax.swing.JButton CancelButton;
+    private javax.swing.JTextField DoctorTextField;
     private javax.swing.JTable PatientTablee;
+    private javax.swing.JTextField PhoneTextField;
     private javax.swing.JComboBox<String> TimeComboBox;
     private javax.swing.JButton jButton1;
     private com.toedter.calendar.JDateChooser jDateChooser1;
@@ -351,7 +358,5 @@ if(!(TimeComboBox.getSelectedItem().equals("Time"))){ AddButton.setEnabled(true)
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nameTextField;
-    private javax.swing.JTextField nameTextField1;
-    private javax.swing.JTextField nameTextField2;
     // End of variables declaration//GEN-END:variables
 }

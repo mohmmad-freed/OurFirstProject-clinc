@@ -381,7 +381,7 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
 
     private void AddDateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddDateButtonActionPerformed
 
-Logger.log("add new appointment");       // TODO add your handling code here:
+Logger.log(" new appiontment:  Doctor: "+JDocNames.getSelectedItem().toString() +"  Date: "+jDateChooser1.getDate()+"  Time: "+TimeComboBox.getSelectedItem().toString() );       
 
         // TODO add your handling code here:
 
