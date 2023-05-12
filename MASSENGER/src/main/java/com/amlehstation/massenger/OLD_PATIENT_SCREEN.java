@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -162,6 +163,23 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
         jLabel6.setText("Date :");
 
         TimeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Time", "8:00" }));
+        TimeComboBox.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+                TimeComboBoxPopupMenuWillBecomeVisible(evt);
+            }
+        });
+        TimeComboBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TimeComboBoxMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                TimeComboBoxMouseEntered(evt);
+            }
+        });
         TimeComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TimeComboBoxActionPerformed(evt);
@@ -178,6 +196,17 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
+        jDateChooser1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jDateChooser1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jDateChooser1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jDateChooser1MouseExited(evt);
+            }
+        });
         jDateChooser1.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentMoved(java.awt.event.ComponentEvent evt) {
                 jDateChooser1ComponentMoved(evt);
@@ -188,6 +217,7 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
                 jDateChooser1CaretPositionChanged(evt);
             }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                jDateChooser1InputMethodTextChanged(evt);
             }
         });
         jDateChooser1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -424,9 +454,75 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
 
     private void jDateChooser1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jDateChooser1PropertyChange
         // TODO add your handling code here:
-        Date selectedDate = jDateChooser1.getDate();
-        String selectedDocName = (String) JDocNames.getSelectedItem();
+//        
+//        Date selectedDate = jDateChooser1.getDate();
+//        String selectedDocName = (String) JDocNames.getSelectedItem();
+//        if (selectedDate != null && selectedDocName != null) {
+//            SimpleDateFormat dayFormat = new SimpleDateFormat("EEEE", new Locale("en"));
+//            String dayName = dayFormat.format(selectedDate);
+//            System.out.println("اسم اليوم: " + dayName);
+//            AddDateButton.setEnabled(false);
+//
+//            TimeComboBox.setSelectedItem("Time");
+//            int itemCount = TimeComboBox.getItemCount();
+//            for (int i = itemCount - 1; i > 0; i--) {
+//                TimeComboBox.removeItemAt(i);
+//            }
+//            FArr F = new FArr();
+//            ArrayList<String> AT = F.getDoctorAvailable(selectedDate.toString(), selectedDocName.toString(), dayName);
+//
+//            if (!AT.isEmpty()) {
+//                for (String Ava : AT) {
+//                    TimeComboBox.addItem(Ava);
+//                }
+//            }
+//        } else {
+//            System.out.println("تاريخ أو اسم الطبيب المحدد غير صالح");
+//        }
 
+
+    }//GEN-LAST:event_jDateChooser1PropertyChange
+
+    private void jDateChooser1VetoableChange(java.beans.PropertyChangeEvent evt)throws java.beans.PropertyVetoException {//GEN-FIRST:event_jDateChooser1VetoableChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jDateChooser1VetoableChange
+
+    private void jDateChooser1InputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jDateChooser1InputMethodTextChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jDateChooser1InputMethodTextChanged
+
+    private void jDateChooser1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jDateChooser1MouseClicked
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_jDateChooser1MouseClicked
+
+    private void jDateChooser1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jDateChooser1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jDateChooser1MouseEntered
+
+    private void jDateChooser1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jDateChooser1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jDateChooser1MouseExited
+
+    private void TimeComboBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TimeComboBoxMouseClicked
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_TimeComboBoxMouseClicked
+
+    private void TimeComboBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TimeComboBoxMouseEntered
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_TimeComboBoxMouseEntered
+
+    private void TimeComboBoxPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_TimeComboBoxPopupMenuWillBecomeVisible
+        // TODO add your handling code here:
+
+        int selectedRow = PatientTablee.getSelectedRow();
+        if (selectedRow >= 0) {
+            Object selectedValue = PatientTablee.getValueAt(selectedRow, 1);
+            System.out.println("القيمة المحددة: " + selectedValue);
+                    Date selectedDate = jDateChooser1.getDate();
+        String selectedDocName = (String) JDocNames.getSelectedItem();
         if (selectedDate != null && selectedDocName != null) {
             SimpleDateFormat dayFormat = new SimpleDateFormat("EEEE", new Locale("en"));
             String dayName = dayFormat.format(selectedDate);
@@ -449,13 +545,14 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
         } else {
             System.out.println("تاريخ أو اسم الطبيب المحدد غير صالح");
         }
+        } else {
+            JOptionPane.showMessageDialog(this, "No patient selected");
+            TimeComboBox.setVisible(false);
+            TimeComboBox.setVisible(true);
+        }
 
 
-    }//GEN-LAST:event_jDateChooser1PropertyChange
-
-    private void jDateChooser1VetoableChange(java.beans.PropertyChangeEvent evt)throws java.beans.PropertyVetoException {//GEN-FIRST:event_jDateChooser1VetoableChange
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jDateChooser1VetoableChange
+    }//GEN-LAST:event_TimeComboBoxPopupMenuWillBecomeVisible
 
     /**
      * @param args the command line arguments

@@ -25,6 +25,7 @@ public class FArr {
     public ArrayList<String> getDoctorAvailable(String searchDate, String doctorName, String day) {
     ArrayList<String> workingHours = new ArrayList<>();
     ArrayList<String> appointments = new ArrayList<>();
+    ArrayList<String> PDates = new ArrayList<>();
 
     String dbName = "maindb";
     String url = "jdbc:mysql://localhost/" + dbName;
@@ -45,6 +46,7 @@ public class FArr {
             String time = resultSet.getString("Time");
             appointments.add(time);
         }
+        
 
         String query2 = "SELECT DTime FROM schedule "
                 + "WHERE DoID IN (SELECT DoID FROM doctor WHERE DoName = ?) "
@@ -57,7 +59,19 @@ public class FArr {
             String workingHour = resultSet2.getString("DTime");
             workingHours.add(workingHour);
         }
-
+        String query3 = "SELECT Time FROM dates "
+                + "WHERE PaID IN (SELECT PaID FROM patients WHERE PaPhone = ?) "
+                + "AND Date = ?";
+        PreparedStatement stat3=connection.prepareStatement(query3);
+        stat3.setString(1, doctorName);
+        stat3.setString(2, searchDate);
+        ResultSet result3=stat3.executeQuery();
+        while (result3.next()) {            
+            String time =result3.getString("Time");
+            PDates.add(time);
+        }
+        stat3.close();
+        result3.close();
         resultSet2.close();
         statement2.close();
         resultSet.close();
@@ -67,6 +81,7 @@ public class FArr {
         e.printStackTrace();
     }
 
+    workingHours.removeAll(PDates);
     workingHours.removeAll(appointments);
     return workingHours;
 
