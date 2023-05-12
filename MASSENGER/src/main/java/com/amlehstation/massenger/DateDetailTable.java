@@ -29,8 +29,8 @@ public class DateDetailTable {
         try {
             Connection conn = DriverManager.getConnection(dbURL, username, password);
             Statement stmt = conn.createStatement();
-
-            String sql = "SELECT dates.Date, dates.Time, patients.PaName, doctor.DoName, secrtary.SeName "
+//dates.Time,dates.Date,secrtary.SeName,doctor.DoName,patients.PaName
+            String sql = "SELECT dates.Time,dates.Date,secrtary.SeName,doctor.DoName,patients.PaName "
                     + "FROM ((dates "
                     + "INNER JOIN patients ON dates.PaID = patients.PaID) "
                     + "INNER JOIN doctor ON dates.DoID = doctor.DoID) "
@@ -45,7 +45,7 @@ public class DateDetailTable {
             for (int i = 1; i <= numColumns; i++) {
                 model.addColumn(rsmd.getColumnLabel(i));
             }
-            model.setColumnIdentifiers(new String[]{"Patients", "Doctor", "Date", "Time", "Secretary"});
+            model.setColumnIdentifiers(new String[]{"Time", "Date", "Secretary", "Doctor", "Patients"});
 
             while (rs.next()) {
                 Object[] rowData = new Object[numColumns];

@@ -427,6 +427,10 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
         jDateChooser1.setCalendar(null);
         AddDateButton.setEnabled(false);
         TimeComboBox.setSelectedItem("Time");
+        int itemCount = TimeComboBox.getItemCount();
+            for (int i = itemCount - 1; i > 0; i--) {
+                TimeComboBox.removeItemAt(i);
+            }
 
     }//GEN-LAST:event_JDocNamesActionPerformed
 
@@ -519,18 +523,43 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
 
     private void TimeComboBoxPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_TimeComboBoxPopupMenuWillBecomeVisible
 //         TODO add your handling code here:
+//Date selectedDate = jDateChooser2.getDate();
+//        String selectedDocName = (String) JDocNames.getSelectedItem();
+//        if (selectedDate != null && selectedDocName != null) {
+//            SimpleDateFormat dayFormat = new SimpleDateFormat("EEEE", new Locale("en"));
+//            String dayName = dayFormat.format(selectedDate);
+//            AddButton.setEnabled(false);
+//            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+//            String formattedDate = dateFormat.format(jDateChooser2.getDate());
+//
+//            TimeComboBox.setSelectedItem("Time");
+//            int itemCount = TimeComboBox.getItemCount();
+//            for (int i = itemCount - 1; i > 0; i--) {
+//                TimeComboBox.removeItemAt(i);
+//            }
+//            FArr F = new FArr();
+//            ArrayList<String> AT = F.getDoctorAvailable(formattedDate, "", selectedDocName.toString(), dayName);
+//            if (!AT.isEmpty()) {
+//                for (String Ava : AT) {
+//                    TimeComboBox.addItem(Ava);
+//                    String[] parts = Ava.split(":");
+//                    String formattedTime = parts[0] + ":" + parts[1];
+//                }
+//            }
+//
+
 
         int selectedRow = PatientTablee.getSelectedRow();
         if (selectedRow >= 0) {
 
-String selectedValue = PatientTablee.getValueAt(selectedRow, PatientTablee.getColumn("Name").getModelIndex()).toString();
-            System.out.println("القيمة المحددة: " + selectedValue);
+String selectedValue = PatientTablee.getValueAt(selectedRow, PatientTablee.getColumn("Patients").getModelIndex()).toString();
+        System.out.println("القيمة المحددة: " + selectedValue);
         Date selectedDate = jDateChooser1.getDate();
         String selectedDocName = (String) JDocNames.getSelectedItem();
         if (selectedDate != null && selectedDocName != null) {
             SimpleDateFormat dayFormat = new SimpleDateFormat("EEEE", new Locale("en"));
             String dayName = dayFormat.format(selectedDate);
-            System.out.println("اسم اليوم: " + dayName);
+            System.out.println(selectedValue);
             AddDateButton.setEnabled(false);
 
             TimeComboBox.setSelectedItem("Time");
@@ -539,6 +568,7 @@ String selectedValue = PatientTablee.getValueAt(selectedRow, PatientTablee.getCo
                 TimeComboBox.removeItemAt(i);
             }
             FArr F = new FArr();
+
             ArrayList<String> AT = F.getDoctorAvailable(selectedDate.toString(), selectedValue, selectedDocName.toString(), dayName);
             if (!AT.isEmpty()) {
                 for (String Ava : AT) {
@@ -550,8 +580,8 @@ String selectedValue = PatientTablee.getValueAt(selectedRow, PatientTablee.getCo
             }
         } else {
             System.out.println("تاريخ أو اسم الطبيب المحدد غير صالح");
-        }
-        } else {
+        }}
+         else {
             JOptionPane.showMessageDialog(this, "No patient selected");
             TimeComboBox.setVisible(false);
             TimeComboBox.setVisible(true);

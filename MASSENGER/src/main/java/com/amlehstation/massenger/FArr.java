@@ -26,6 +26,7 @@ public class FArr {
     ArrayList<String> workingHours = new ArrayList<>();
     ArrayList<String> appointments = new ArrayList<>();
     ArrayList<String> PDates = new ArrayList<>();
+    
 
     String dbName = "maindb";
     String url = "jdbc:mysql://localhost/" + dbName;

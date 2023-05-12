@@ -4,6 +4,17 @@
  */
 package com.amlehstation.massenger;
 
+import java.sql.Time;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Locale;
+import java.util.Set;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.plaf.metal.MetalBorders;
+
 /**
  *
  * @author ASD
@@ -32,15 +43,15 @@ public class NEW_PATIENT_SCREEN extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         TimeComboBox = new javax.swing.JComboBox<>();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         AddButton = new javax.swing.JButton();
         CancelButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         nameTextField = new javax.swing.JTextField();
-        nameTextField2 = new javax.swing.JTextField();
-        nameTextField1 = new javax.swing.JTextField();
+        Phone = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
+        JDocNames = new javax.swing.JComboBox<>();
+        jDateChooser2 = new com.toedter.calendar.JDateChooser();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         PatientTablee = new javax.swing.JTable();
@@ -55,7 +66,17 @@ public class NEW_PATIENT_SCREEN extends javax.swing.JFrame {
 
         jLabel4.setText("Time :");
 
-        TimeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "8:00" }));
+        TimeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Time" }));
+        TimeComboBox.setToolTipText("");
+        TimeComboBox.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+                TimeComboBoxPopupMenuWillBecomeVisible(evt);
+            }
+        });
         TimeComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TimeComboBoxActionPerformed(evt);
@@ -90,20 +111,26 @@ public class NEW_PATIENT_SCREEN extends javax.swing.JFrame {
             }
         });
 
-        nameTextField2.addActionListener(new java.awt.event.ActionListener() {
+        Phone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nameTextField2ActionPerformed(evt);
-            }
-        });
-
-        nameTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nameTextField1ActionPerformed(evt);
+                PhoneActionPerformed(evt);
             }
         });
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setText("Dr Name :");
+
+        JDocNames.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "doctor" }));
+        JDocNames.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JDocNamesMouseClicked(evt);
+            }
+        });
+        JDocNames.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JDocNamesActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -120,8 +147,7 @@ public class NEW_PATIENT_SCREEN extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(nameTextField)
-                            .addComponent(nameTextField2)
-                            .addComponent(nameTextField1))
+                            .addComponent(Phone))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(AddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -133,11 +159,13 @@ public class NEW_PATIENT_SCREEN extends javax.swing.JFrame {
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(TimeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(TimeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(JDocNames, 0, 113, Short.MAX_VALUE)
+                                    .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addContainerGap(383, Short.MAX_VALUE))))
         );
         jPanel6Layout.setVerticalGroup(
@@ -150,15 +178,16 @@ public class NEW_PATIENT_SCREEN extends javax.swing.JFrame {
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(nameTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(nameTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(Phone, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(36, 36, 36))
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel5)))
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel5)
+                                    .addComponent(JDocNames, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(18, 18, 18))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
@@ -168,7 +197,7 @@ public class NEW_PATIENT_SCREEN extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)))
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -271,25 +300,107 @@ public class NEW_PATIENT_SCREEN extends javax.swing.JFrame {
     }//GEN-LAST:event_nameTextFieldActionPerformed
 
     private void TimeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TimeComboBoxActionPerformed
-if(!(TimeComboBox.getSelectedItem().equals("Time"))){ AddButton.setEnabled(true);}        // TODO add your handling code here:
+        if (!(TimeComboBox.getSelectedItem().equals("Time"))) {
+            AddButton.setEnabled(true);
+        }        // TODO add your handling code here:
+        if (!(TimeComboBox.getSelectedItem().equals("Time"))) {
+            AddButton.setEnabled(true);
+        }
+        if ((TimeComboBox.getSelectedItem().equals("Time"))) {
+            AddButton.setEnabled(false);
+        }
     }//GEN-LAST:event_TimeComboBoxActionPerformed
 
     private void AddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButtonActionPerformed
-      
+        if (validateFields()) {
+            try {
+                String dbName = "maindb";
+                String url = "jdbc:mysql://localhost/";
+                String user = "root";
+                String password = "";
+
+                String patientName = nameTextField.getText();
+                String patientPhone = Phone.getText();
+                String doctorName = JDocNames.getSelectedItem().toString();
+                String secretaryName = "sec";
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+                String formattedDate = dateFormat.format(jDateChooser2.getDate());
+                System.out.println(formattedDate);
+
+                SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss", new Locale("en"));
+                String timeString = TimeComboBox.getSelectedItem().toString();
+                Time time = Time.valueOf(timeString);
+                System.out.println(time.toString());
+
+                PATIENT p = new PATIENT(dbName, url, user, password);
+                p.addPatient(patientName, patientPhone);
+                p.addAppointment(patientName, doctorName, secretaryName, formattedDate, time.toString());
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e);
+            }
+        }
+
     }//GEN-LAST:event_AddButtonActionPerformed
 
     private void CancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelButtonActionPerformed
-      SECRETARY_SCREEN SecScreen  = new SECRETARY_SCREEN() ;
-     OPENCLOSE.closeAndOpen(this, SecScreen);
+        SECRETARY_SCREEN SecScreen = new SECRETARY_SCREEN();
+        OPENCLOSE.closeAndOpen(this, SecScreen);
     }//GEN-LAST:event_CancelButtonActionPerformed
 
-    private void nameTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTextField1ActionPerformed
+    private void PhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PhoneActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nameTextField1ActionPerformed
+    }//GEN-LAST:event_PhoneActionPerformed
 
-    private void nameTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTextField2ActionPerformed
+    private void JDocNamesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JDocNamesMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_nameTextField2ActionPerformed
+    }//GEN-LAST:event_JDocNamesMouseClicked
+
+    private void JDocNamesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JDocNamesActionPerformed
+        // TODO add your handling code here:
+
+        jDateChooser2.setCalendar(null);
+        AddButton.setEnabled(false);
+        TimeComboBox.setSelectedItem("Time");
+        int itemCount = TimeComboBox.getItemCount();
+        for (int i = itemCount - 1; i > 0; i--) {
+            TimeComboBox.removeItemAt(i);
+        }
+
+    }//GEN-LAST:event_JDocNamesActionPerformed
+
+    private void TimeComboBoxPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_TimeComboBoxPopupMenuWillBecomeVisible
+        // TODO add your handling code here:
+
+        Date selectedDate = jDateChooser2.getDate();
+        String selectedDocName = (String) JDocNames.getSelectedItem();
+        if (selectedDate != null && selectedDocName != null) {
+            SimpleDateFormat dayFormat = new SimpleDateFormat("EEEE", new Locale("en"));
+            String dayName = dayFormat.format(selectedDate);
+            AddButton.setEnabled(false);
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+            String formattedDate = dateFormat.format(jDateChooser2.getDate());
+
+            TimeComboBox.setSelectedItem("Time");
+            int itemCount = TimeComboBox.getItemCount();
+            for (int i = itemCount - 1; i > 0; i--) {
+                TimeComboBox.removeItemAt(i);
+            }
+            FArr F = new FArr();
+            ArrayList<String> AT = F.getDoctorAvailable(formattedDate, "", selectedDocName.toString(), dayName);
+            if (!AT.isEmpty()) {
+                for (String Ava : AT) {
+                    TimeComboBox.addItem(Ava);
+                    String[] parts = Ava.split(":");
+                    String formattedTime = parts[0] + ":" + parts[1];
+                }
+            }
+
+        } else {
+            System.out.println("تاريخ أو اسم الطبيب المحدد غير صالح");
+        }
+
+
+    }//GEN-LAST:event_TimeComboBoxPopupMenuWillBecomeVisible
 
     /**
      * @param args the command line arguments
@@ -326,19 +437,44 @@ if(!(TimeComboBox.getSelectedItem().equals("Time"))){ AddButton.setEnabled(true)
             }
         });
     }
-    public void start(){
-    DateDetailTable s=new DateDetailTable("jdbc:mysql://localhost:3306/maindb","root","");
-    PatientTablee.setModel(s.getDateDetails());
-    AddButton.setEnabled(false);
+
+    public void start() {
+        DateDetailTable s = new DateDetailTable("jdbc:mysql://localhost:3306/maindb", "root", "");
+        PatientTablee.setModel(s.getDateDetails());
+        AddButton.setEnabled(false);
+        NameDoArr d = new NameDoArr();
+        ArrayList<String> sn = new ArrayList<>();
+        sn = d.getDoctorNames();
+        JDocNames.removeAllItems();
+        for (String name : sn) {
+            JDocNames.addItem(name);
+        }
+    }
+
+    private boolean validateFields() {
+
+        if (nameTextField.getText().isEmpty() || Phone.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please fill all required fields");
+            return false;
+        }
+        String phoneRegex = "^0[0-9]{9,12}$";
+        if (!Phone.getText().matches(phoneRegex)) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid phone number starting with 0 or +9** and consisting of 10 or 14 digits");
+            return false;
+        }
+
+        return true;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddButton;
     private javax.swing.JButton CancelButton;
+    private javax.swing.JComboBox<String> JDocNames;
     private javax.swing.JTable PatientTablee;
+    private javax.swing.JTextField Phone;
     private javax.swing.JComboBox<String> TimeComboBox;
     private javax.swing.JButton jButton1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -351,7 +487,5 @@ if(!(TimeComboBox.getSelectedItem().equals("Time"))){ AddButton.setEnabled(true)
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nameTextField;
-    private javax.swing.JTextField nameTextField1;
-    private javax.swing.JTextField nameTextField2;
     // End of variables declaration//GEN-END:variables
 }

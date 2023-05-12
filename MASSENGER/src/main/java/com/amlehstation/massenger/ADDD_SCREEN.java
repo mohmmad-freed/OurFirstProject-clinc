@@ -937,7 +937,7 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
         // فحص ما إذا كان رقم الهاتف يبدأ بـ 0 ويحتوي على 10 أو 14 رقمًا
         String phoneRegex = "^0[0-9]{9,12}$";
         if (!JPhone.getText().matches(phoneRegex)) {
-            JOptionPane.showMessageDialog(this, "Please enter a valid phone number starting with 0 or +966 and consisting of 10 or 14 digits");
+            JOptionPane.showMessageDialog(this, "Please enter a valid phone number starting with 0 or +9** and consisting of 10 or 14 digits");
             return false;
         }
         // فحص ما إذا كانت البريد الإلكتروني صالحة
