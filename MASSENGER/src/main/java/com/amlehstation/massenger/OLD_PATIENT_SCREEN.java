@@ -519,7 +519,7 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
 
         int selectedRow = PatientTablee.getSelectedRow();
         if (selectedRow >= 0) {
-            Object selectedValue = PatientTablee.getValueAt(selectedRow, 1);
+            String selectedValue = PatientTablee.getValueAt(selectedRow, 1).toString();
             System.out.println("القيمة المحددة: " + selectedValue);
                     Date selectedDate = jDateChooser1.getDate();
         String selectedDocName = (String) JDocNames.getSelectedItem();
@@ -535,7 +535,7 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
                 TimeComboBox.removeItemAt(i);
             }
             FArr F = new FArr();
-            ArrayList<String> AT = F.getDoctorAvailable(selectedDate.toString(), selectedDocName.toString(), dayName);
+            ArrayList<String> AT = F.getDoctorAvailable(selectedDate.toString(),selectedValue, selectedDocName.toString(), dayName);
 
             if (!AT.isEmpty()) {
                 for (String Ava : AT) {

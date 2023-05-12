@@ -22,7 +22,7 @@ public class FArr {
     String user = "root";
     String password = "";
 
-    public ArrayList<String> getDoctorAvailable(String searchDate, String doctorName, String day) {
+    public ArrayList<String> getDoctorAvailable(String searchDate,String PName, String doctorName, String day) {
     ArrayList<String> workingHours = new ArrayList<>();
     ArrayList<String> appointments = new ArrayList<>();
     ArrayList<String> PDates = new ArrayList<>();
@@ -63,7 +63,7 @@ public class FArr {
                 + "WHERE PaID IN (SELECT PaID FROM patients WHERE PaPhone = ?) "
                 + "AND Date = ?";
         PreparedStatement stat3=connection.prepareStatement(query3);
-        stat3.setString(1, doctorName);
+        stat3.setString(1, PName);
         stat3.setString(2, searchDate);
         ResultSet result3=stat3.executeQuery();
         while (result3.next()) {            
