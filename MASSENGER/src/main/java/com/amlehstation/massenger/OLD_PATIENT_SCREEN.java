@@ -155,9 +155,19 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Swis721 Ex BT", 3, 10)); // NOI18N
         jButton1.setText("Search");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Swis721 Ex BT", 3, 10)); // NOI18N
         jButton2.setText("Search");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Segoe Print", 2, 18)); // NOI18N
         jLabel5.setText("Time :");
@@ -568,14 +578,15 @@ String selectedValue = PatientTablee.getValueAt(selectedRow, PatientTablee.getCo
                 TimeComboBox.removeItemAt(i);
             }
             FArr F = new FArr();
+             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+            String formattedDate = dateFormat.format(jDateChooser1.getDate());
 
-            ArrayList<String> AT = F.getDoctorAvailable(selectedDate.toString(), selectedValue, selectedDocName.toString(), dayName);
+            ArrayList<String> AT = F.getDoctorAvailable(formattedDate, selectedValue, selectedDocName.toString(), dayName);
             if (!AT.isEmpty()) {
                 for (String Ava : AT) {
                     TimeComboBox.addItem(Ava);
                       String[] parts = Ava.split(":");
         String formattedTime = parts[0] + ":" + parts[1];
-        System.out.println(formattedTime);
                 }
             }
         } else {
@@ -589,6 +600,17 @@ String selectedValue = PatientTablee.getValueAt(selectedRow, PatientTablee.getCo
 
 
     }//GEN-LAST:event_TimeComboBoxPopupMenuWillBecomeVisible
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        DateDetailTable D=new DateDetailTable("jdbc:mysql://localhost:3306/maindb", "root", "");
+        PatientTablee.setModel(D.getTableModelByName(NameTextField.getText()));
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        DateDetailTable D=new DateDetailTable("jdbc:mysql://localhost:3306/maindb", "root", "");
+        PatientTablee.setModel(D.getTableModelByPhone(PhoneTextField.getText()));
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
