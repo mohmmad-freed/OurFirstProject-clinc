@@ -518,13 +518,13 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
     }//GEN-LAST:event_TimeComboBoxMouseEntered
 
     private void TimeComboBoxPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_TimeComboBoxPopupMenuWillBecomeVisible
-        // TODO add your handling code here:
+//         TODO add your handling code here:
 
         int selectedRow = PatientTablee.getSelectedRow();
-//        if (selectedRow >= 0) {
+        if (selectedRow >= 0) {
 
-//            String selectedValue = PatientTablee.getValueAt(selectedRow, 1).toString();
-//            System.out.println("القيمة المحددة: " + selectedValue);
+String selectedValue = PatientTablee.getValueAt(selectedRow, PatientTablee.getColumn("Name").getModelIndex()).toString();
+            System.out.println("القيمة المحددة: " + selectedValue);
         Date selectedDate = jDateChooser1.getDate();
         String selectedDocName = (String) JDocNames.getSelectedItem();
         if (selectedDate != null && selectedDocName != null) {
@@ -539,8 +539,7 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
                 TimeComboBox.removeItemAt(i);
             }
             FArr F = new FArr();
-//            ArrayList<String> AT = F.getDoctorAvailable(selectedDate.toString(),selectedValue, selectedDocName.toString(), dayName);
-            ArrayList<String> AT = F.getDoctorAvailable(selectedDate.toString(), "Hello", selectedDocName.toString(), dayName);
+            ArrayList<String> AT = F.getDoctorAvailable(selectedDate.toString(), selectedValue, selectedDocName.toString(), dayName);
             if (!AT.isEmpty()) {
                 for (String Ava : AT) {
                     TimeComboBox.addItem(Ava);
@@ -552,11 +551,11 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
         } else {
             System.out.println("تاريخ أو اسم الطبيب المحدد غير صالح");
         }
-//        } else {
-//            JOptionPane.showMessageDialog(this, "No patient selected");
-//            TimeComboBox.setVisible(false);
-//            TimeComboBox.setVisible(true);
-//        }
+        } else {
+            JOptionPane.showMessageDialog(this, "No patient selected");
+            TimeComboBox.setVisible(false);
+            TimeComboBox.setVisible(true);
+        }
 
 
     }//GEN-LAST:event_TimeComboBoxPopupMenuWillBecomeVisible
