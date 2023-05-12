@@ -4,10 +4,13 @@
  */
 package com.amlehstation.massenger;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -518,10 +521,11 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         int selectedRow = PatientTablee.getSelectedRow();
-        if (selectedRow >= 0) {
-            String selectedValue = PatientTablee.getValueAt(selectedRow, 1).toString();
-            System.out.println("القيمة المحددة: " + selectedValue);
-                    Date selectedDate = jDateChooser1.getDate();
+//        if (selectedRow >= 0) {
+
+//            String selectedValue = PatientTablee.getValueAt(selectedRow, 1).toString();
+//            System.out.println("القيمة المحددة: " + selectedValue);
+        Date selectedDate = jDateChooser1.getDate();
         String selectedDocName = (String) JDocNames.getSelectedItem();
         if (selectedDate != null && selectedDocName != null) {
             SimpleDateFormat dayFormat = new SimpleDateFormat("EEEE", new Locale("en"));
@@ -535,21 +539,24 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
                 TimeComboBox.removeItemAt(i);
             }
             FArr F = new FArr();
-            ArrayList<String> AT = F.getDoctorAvailable(selectedDate.toString(),selectedValue, selectedDocName.toString(), dayName);
-
+//            ArrayList<String> AT = F.getDoctorAvailable(selectedDate.toString(),selectedValue, selectedDocName.toString(), dayName);
+            ArrayList<String> AT = F.getDoctorAvailable(selectedDate.toString(), "Hello", selectedDocName.toString(), dayName);
             if (!AT.isEmpty()) {
                 for (String Ava : AT) {
                     TimeComboBox.addItem(Ava);
+                      String[] parts = Ava.split(":");
+        String formattedTime = parts[0] + ":" + parts[1];
+        System.out.println(formattedTime);
                 }
             }
         } else {
             System.out.println("تاريخ أو اسم الطبيب المحدد غير صالح");
         }
-        } else {
-            JOptionPane.showMessageDialog(this, "No patient selected");
-            TimeComboBox.setVisible(false);
-            TimeComboBox.setVisible(true);
-        }
+//        } else {
+//            JOptionPane.showMessageDialog(this, "No patient selected");
+//            TimeComboBox.setVisible(false);
+//            TimeComboBox.setVisible(true);
+//        }
 
 
     }//GEN-LAST:event_TimeComboBoxPopupMenuWillBecomeVisible
@@ -601,6 +608,7 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
             JDocNames.addItem(name);
         }
     }
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
