@@ -345,6 +345,10 @@ public class NEW_PATIENT_SCREEN extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "حدثت مشكلة أثناء الإضافة:\n" + e.getMessage());
             }
         }
+         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+                String formattedDate = dateFormat.format(jDateChooser2.getDate());
+                System.out.println(formattedDate);
+        Logger.log("new patient appiontment:  Name: "+nameTextField.getText()+"  phone: "+Phone.getText()+"  Doctor: "+JDocNames.getSelectedItem()+"\nDate: "+formattedDate+"  Time: "+TimeComboBox.getSelectedItem());
 
     }//GEN-LAST:event_AddButtonActionPerformed
 

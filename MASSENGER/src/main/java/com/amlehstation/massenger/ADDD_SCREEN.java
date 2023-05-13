@@ -783,6 +783,7 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
             }
 
         }
+Logger.log("new doctor:  Name: "+JName.getText()+"  phone: "+JPhone.getText()+"  Email: "+ JEmail.getText());
 
 
     }//GEN-LAST:event_jButton1ActionPerformed

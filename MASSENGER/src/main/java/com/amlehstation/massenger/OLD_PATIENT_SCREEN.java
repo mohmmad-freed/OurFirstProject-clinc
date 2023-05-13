@@ -444,6 +444,7 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
                     UpdateInf();
 
         }
+        com.amlehstation.massenger.Logger.log("Removed Appointment");
     }//GEN-LAST:event_RemoveRowButtonActionPerformed
 
     private void AddDateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddDateButtonActionPerformed
