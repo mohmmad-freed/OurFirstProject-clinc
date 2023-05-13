@@ -5,7 +5,12 @@
 package com.amlehstation.massenger;
 
 import java.sql.*;
+import javax.swing.JTable;
+import javax.swing.RowSorter;
+import javax.swing.SortOrder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 
 /**
@@ -110,11 +115,25 @@ public class DateDetailTable {
         System.out.println("VendorError: " + ex.getErrorCode());
     }
 
+    // ترتيب البيانات حسب التاريخ والوقت
+    if (model != null) {
+        JTable table = new JTable(model);
+        TableRowSorter<TableModel> sorter = new TableRowSorter<>(table.getModel());
+        sorter.setSortKeys(
+                java.util.List.of(
+                        new RowSorter.SortKey(1, SortOrder.ASCENDING),
+                        new RowSorter.SortKey(0, SortOrder.ASCENDING)
+                )
+        );
+        table.setRowSorter(sorter);
+        model = (DefaultTableModel) table.getModel();
+    }
+
     return model;
 }
 
 public DefaultTableModel getTableModelByPhone(String phone) {
-       DefaultTableModel model = null;
+    DefaultTableModel model = null;
     try {
         // إنشاء اتصال بقاعدة البيانات
         Connection conn = DriverManager.getConnection(dbURL, username, password);
@@ -157,7 +176,22 @@ public DefaultTableModel getTableModelByPhone(String phone) {
         System.out.println("VendorError: " + ex.getErrorCode());
     }
 
+    // ترتيب البيانات حسب التاريخ والوقت
+    if (model != null) {
+        JTable table = new JTable(model);
+        TableRowSorter<TableModel> sorter = new TableRowSorter<>(table.getModel());
+        sorter.setSortKeys(
+                java.util.List.of(
+                        new RowSorter.SortKey(1, SortOrder.ASCENDING),
+                        new RowSorter.SortKey(0, SortOrder.ASCENDING)
+                )
+        );
+        table.setRowSorter(sorter);
+        model = (DefaultTableModel) table.getModel();
+    }
+
     return model;
 }
+
     
 }

@@ -333,11 +333,17 @@ public class NEW_PATIENT_SCREEN extends javax.swing.JFrame {
                 System.out.println(time.toString());
 
                 PATIENT p = new PATIENT(dbName, url, user, password);
-                p.addPatient(patientName, patientPhone);
-                p.addAppointment(patientName, doctorName, secretaryName, formattedDate, time.toString());
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, e);
+               boolean success= p.addPatient(patientName, patientPhone);
+
+            boolean success2 =  p.addAppointment(patientName, doctorName, secretaryName, formattedDate, time.toString());
+            if (success2&&success) {
+                JOptionPane.showMessageDialog(this, "تمت الإضافة بنجاح!");
+            } else {
+                JOptionPane.showMessageDialog(this, "حدثت مشكلة أثناء الإضافة. يُرجى المحاولة مرة أخرى.");
             }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "حدثت مشكلة أثناء الإضافة:\n" + e.getMessage());
+        }
         }
 
     }//GEN-LAST:event_AddButtonActionPerformed

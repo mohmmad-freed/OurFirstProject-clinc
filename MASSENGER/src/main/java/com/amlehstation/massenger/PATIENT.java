@@ -31,7 +31,7 @@ public class PATIENT extends PERSON {
     }
     
 
-    public void addAppointment(String patientName, String doctorName, String secretaryName, String Date, String time) {
+    public boolean addAppointment(String patientName, String doctorName, String secretaryName, String Date, String time) {
         Connection connection = null;
         PreparedStatement statement = null;
 
@@ -52,8 +52,11 @@ public class PATIENT extends PERSON {
             statement.executeUpdate();
 
             System.out.println("Appointment added successfully!");
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+                        return false;
+
         } finally {
             try {
                 if (statement != null) {
@@ -62,13 +65,17 @@ public class PATIENT extends PERSON {
                 if (connection != null) {
                     connection.close();
                 }
+                                        return true;
+
             } catch (SQLException e) {
                 e.printStackTrace();
+                                        return false;
+
             }
         }
     }
 
-    public void addPatient(String patientName, String patientPhone) {
+    public boolean addPatient(String patientName, String patientPhone) {
         Connection connection = null;
         PreparedStatement statement = null;
 
@@ -85,8 +92,12 @@ public class PATIENT extends PERSON {
             statement.executeUpdate();
 
             System.out.println("Patient added successfully");
+                        return true;
+
         } catch (SQLException e) {
             e.printStackTrace();
+                        return false;
+
         } finally {
             try {
                 if (statement != null) {
@@ -94,9 +105,13 @@ public class PATIENT extends PERSON {
                 }
                 if (connection != null) {
                     connection.close();
+                    
                 }
+                return true;
             } catch (SQLException e) {
                 e.printStackTrace();
+                            return false;
+
             }
         }
     }

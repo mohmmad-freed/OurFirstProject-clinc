@@ -4,6 +4,7 @@
  */
 package com.amlehstation.massenger;
 
+import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -419,7 +420,39 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
 
     private void AddDateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddDateButtonActionPerformed
         // TODO add your handling code here:
+        String selectedValue = "";
+        int selectedRow = PatientTablee.getSelectedRow();
+        if (selectedRow >= 0) {
+            selectedValue = PatientTablee.getValueAt(selectedRow, PatientTablee.getColumn("Patients").getModelIndex()).toString();
+        }
 
+        try {
+            String dbName = "maindb";
+            String url = "jdbc:mysql://localhost/";
+            String user = "root";
+            String password = "";
+
+            String doctorName = JDocNames.getSelectedItem().toString();
+            String secretaryName = "sec";
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+            String formattedDate = dateFormat.format(jDateChooser1.getDate());
+            System.out.println(formattedDate);
+
+            SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss", new Locale("en"));
+            String timeString = TimeComboBox.getSelectedItem().toString();
+            Time time = Time.valueOf(timeString);
+            System.out.println(time.toString());
+
+            PATIENT p = new PATIENT(dbName, url, user, password);
+            boolean success = p.addAppointment(selectedValue, doctorName, secretaryName, formattedDate, time.toString());
+            if (success) {
+                JOptionPane.showMessageDialog(this, "تمت الإضافة بنجاح!");
+            } else {
+                JOptionPane.showMessageDialog(this, "حدثت مشكلة أثناء الإضافة. يُرجى المحاولة مرة أخرى.");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "حدثت مشكلة أثناء الإضافة:\n" + e.getMessage());
+        }
     }//GEN-LAST:event_AddDateButtonActionPerformed
 
     private void TimeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TimeComboBoxActionPerformed
@@ -438,9 +471,9 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
         AddDateButton.setEnabled(false);
         TimeComboBox.setSelectedItem("Time");
         int itemCount = TimeComboBox.getItemCount();
-            for (int i = itemCount - 1; i > 0; i--) {
-                TimeComboBox.removeItemAt(i);
-            }
+        for (int i = itemCount - 1; i > 0; i--) {
+            TimeComboBox.removeItemAt(i);
+        }
 
     }//GEN-LAST:event_JDocNamesActionPerformed
 
@@ -470,32 +503,6 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
     }//GEN-LAST:event_jDateChooser1CaretPositionChanged
 
     private void jDateChooser1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jDateChooser1PropertyChange
-        // TODO add your handling code here:
-//        
-//        Date selectedDate = jDateChooser1.getDate();
-//        String selectedDocName = (String) JDocNames.getSelectedItem();
-//        if (selectedDate != null && selectedDocName != null) {
-//            SimpleDateFormat dayFormat = new SimpleDateFormat("EEEE", new Locale("en"));
-//            String dayName = dayFormat.format(selectedDate);
-//            System.out.println("اسم اليوم: " + dayName);
-//            AddDateButton.setEnabled(false);
-//
-//            TimeComboBox.setSelectedItem("Time");
-//            int itemCount = TimeComboBox.getItemCount();
-//            for (int i = itemCount - 1; i > 0; i--) {
-//                TimeComboBox.removeItemAt(i);
-//            }
-//            FArr F = new FArr();
-//            ArrayList<String> AT = F.getDoctorAvailable(selectedDate.toString(), selectedDocName.toString(), dayName);
-//
-//            if (!AT.isEmpty()) {
-//                for (String Ava : AT) {
-//                    TimeComboBox.addItem(Ava);
-//                }
-//            }
-//        } else {
-//            System.out.println("تاريخ أو اسم الطبيب المحدد غير صالح");
-//        }
 
 
     }//GEN-LAST:event_jDateChooser1PropertyChange
@@ -532,67 +539,40 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
     }//GEN-LAST:event_TimeComboBoxMouseEntered
 
     private void TimeComboBoxPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_TimeComboBoxPopupMenuWillBecomeVisible
-//         TODO add your handling code here:
-//Date selectedDate = jDateChooser2.getDate();
-//        String selectedDocName = (String) JDocNames.getSelectedItem();
-//        if (selectedDate != null && selectedDocName != null) {
-//            SimpleDateFormat dayFormat = new SimpleDateFormat("EEEE", new Locale("en"));
-//            String dayName = dayFormat.format(selectedDate);
-//            AddButton.setEnabled(false);
-//            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
-//            String formattedDate = dateFormat.format(jDateChooser2.getDate());
-//
-//            TimeComboBox.setSelectedItem("Time");
-//            int itemCount = TimeComboBox.getItemCount();
-//            for (int i = itemCount - 1; i > 0; i--) {
-//                TimeComboBox.removeItemAt(i);
-//            }
-//            FArr F = new FArr();
-//            ArrayList<String> AT = F.getDoctorAvailable(formattedDate, "", selectedDocName.toString(), dayName);
-//            if (!AT.isEmpty()) {
-//                for (String Ava : AT) {
-//                    TimeComboBox.addItem(Ava);
-//                    String[] parts = Ava.split(":");
-//                    String formattedTime = parts[0] + ":" + parts[1];
-//                }
-//            }
-//
-
-
         int selectedRow = PatientTablee.getSelectedRow();
         if (selectedRow >= 0) {
 
-String selectedValue = PatientTablee.getValueAt(selectedRow, PatientTablee.getColumn("Patients").getModelIndex()).toString();
-        System.out.println("القيمة المحددة: " + selectedValue);
-        Date selectedDate = jDateChooser1.getDate();
-        String selectedDocName = (String) JDocNames.getSelectedItem();
-        if (selectedDate != null && selectedDocName != null) {
-            SimpleDateFormat dayFormat = new SimpleDateFormat("EEEE", new Locale("en"));
-            String dayName = dayFormat.format(selectedDate);
-            System.out.println(selectedValue);
-            AddDateButton.setEnabled(false);
+            String selectedValue = PatientTablee.getValueAt(selectedRow, PatientTablee.getColumn("Patients").getModelIndex()).toString();
+            System.out.println("القيمة المحددة: " + selectedValue);
+            Date selectedDate = jDateChooser1.getDate();
+            String selectedDocName = (String) JDocNames.getSelectedItem();
+            if (selectedDate != null && selectedDocName != null) {
+                SimpleDateFormat dayFormat = new SimpleDateFormat("EEEE", new Locale("en"));
+                String dayName = dayFormat.format(selectedDate);
+                System.out.println(selectedValue);
+                AddDateButton.setEnabled(false);
 
-            TimeComboBox.setSelectedItem("Time");
-            int itemCount = TimeComboBox.getItemCount();
-            for (int i = itemCount - 1; i > 0; i--) {
-                TimeComboBox.removeItemAt(i);
-            }
-            FArr F = new FArr();
-             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
-            String formattedDate = dateFormat.format(jDateChooser1.getDate());
-
-            ArrayList<String> AT = F.getDoctorAvailable(formattedDate, selectedValue, selectedDocName.toString(), dayName);
-            if (!AT.isEmpty()) {
-                for (String Ava : AT) {
-                    TimeComboBox.addItem(Ava);
-                      String[] parts = Ava.split(":");
-        String formattedTime = parts[0] + ":" + parts[1];
+                TimeComboBox.setSelectedItem("Time");
+                int itemCount = TimeComboBox.getItemCount();
+                for (int i = itemCount - 1; i > 0; i--) {
+                    TimeComboBox.removeItemAt(i);
                 }
+                FArr F = new FArr();
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+                String formattedDate = dateFormat.format(jDateChooser1.getDate());
+
+                ArrayList<String> AT = F.getDoctorAvailable(formattedDate, selectedValue, selectedDocName.toString(), dayName);
+                if (!AT.isEmpty()) {
+                    for (String Ava : AT) {
+                        TimeComboBox.addItem(Ava);
+                        String[] parts = Ava.split(":");
+                        String formattedTime = parts[0] + ":" + parts[1];
+                    }
+                }
+            } else {
+                System.out.println("تاريخ أو اسم الطبيب المحدد غير صالح");
             }
         } else {
-            System.out.println("تاريخ أو اسم الطبيب المحدد غير صالح");
-        }}
-         else {
             JOptionPane.showMessageDialog(this, "No patient selected");
             TimeComboBox.setVisible(false);
             TimeComboBox.setVisible(true);
@@ -602,13 +582,13 @@ String selectedValue = PatientTablee.getValueAt(selectedRow, PatientTablee.getCo
     }//GEN-LAST:event_TimeComboBoxPopupMenuWillBecomeVisible
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        DateDetailTable D=new DateDetailTable("jdbc:mysql://localhost:3306/maindb", "root", "");
+        DateDetailTable D = new DateDetailTable("jdbc:mysql://localhost:3306/maindb", "root", "");
         PatientTablee.setModel(D.getTableModelByName(NameTextField.getText()));
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        DateDetailTable D=new DateDetailTable("jdbc:mysql://localhost:3306/maindb", "root", "");
+        DateDetailTable D = new DateDetailTable("jdbc:mysql://localhost:3306/maindb", "root", "");
         PatientTablee.setModel(D.getTableModelByPhone(PhoneTextField.getText()));
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -659,7 +639,6 @@ String selectedValue = PatientTablee.getValueAt(selectedRow, PatientTablee.getCo
             JDocNames.addItem(name);
         }
     }
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
