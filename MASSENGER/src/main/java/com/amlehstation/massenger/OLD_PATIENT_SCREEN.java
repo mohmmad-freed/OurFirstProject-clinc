@@ -44,7 +44,6 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         PatientTablee = new javax.swing.JTable();
-        UpdateButton = new javax.swing.JButton();
         RemoveRowButton = new javax.swing.JButton();
         CancelButton = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
@@ -101,6 +100,25 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        PatientTablee.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                PatientTableeAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        PatientTablee.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PatientTableeMouseClicked(evt);
+            }
+        });
+        PatientTablee.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                PatientTableePropertyChange(evt);
+            }
+        });
         jScrollPane1.setViewportView(PatientTablee);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -119,9 +137,6 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 323, Short.MAX_VALUE)
                 .addContainerGap())
         );
-
-        UpdateButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        UpdateButton.setText("Update");
 
         RemoveRowButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         RemoveRowButton.setText("Remove ");
@@ -291,7 +306,7 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton2)
                             .addComponent(jButton1))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -359,14 +374,13 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
                         .addComponent(CancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(UpdateButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(RemoveRowButton, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE))
+                .addComponent(RemoveRowButton, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(75, 75, 75))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 17, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -375,8 +389,6 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(UpdateButton)
-                        .addGap(56, 56, 56)
                         .addComponent(RemoveRowButton)
                         .addGap(238, 238, 238))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -416,6 +428,22 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
 
     private void RemoveRowButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveRowButtonActionPerformed
         // TODO add your handling code here:
+        int selectedRow = PatientTablee.getSelectedRow();
+        if (selectedRow >= 0) {
+            String PaName = PatientTablee.getValueAt(selectedRow, PatientTablee.getColumn("Patients").getModelIndex()).toString();
+            String DoctorName = PatientTablee.getValueAt(selectedRow, PatientTablee.getColumn("Doctor").getModelIndex()).toString();
+            String Date = PatientTablee.getValueAt(selectedRow, PatientTablee.getColumn("Date").getModelIndex()).toString();
+            String Time = PatientTablee.getValueAt(selectedRow, PatientTablee.getColumn("Time").getModelIndex()).toString();
+            String SecretaryName = PatientTablee.getValueAt(selectedRow, PatientTablee.getColumn("Secretary").getModelIndex()).toString();
+            PATIENT p = new PATIENT("maindb", "jdbc:mysql://localhost:3306/", "root", "");
+            if (p.deleteAppointment(Time, Date, PaName, DoctorName)) {
+                JOptionPane.showMessageDialog(this, "Deleted");
+
+            }
+                    RemoveRowButton.setEnabled(false);
+                    UpdateInf();
+
+        }
     }//GEN-LAST:event_RemoveRowButtonActionPerformed
 
     private void AddDateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddDateButtonActionPerformed
@@ -447,6 +475,7 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
             boolean success = p.addAppointment(selectedValue, doctorName, secretaryName, formattedDate, time.toString());
             if (success) {
                 JOptionPane.showMessageDialog(this, "تمت الإضافة بنجاح!");
+                UpdateInf();
             } else {
                 JOptionPane.showMessageDialog(this, "حدثت مشكلة أثناء الإضافة. يُرجى المحاولة مرة أخرى.");
             }
@@ -466,14 +495,8 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
 
     private void JDocNamesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JDocNamesActionPerformed
         // TODO add your handling code here:
+        UpdateInf();
 
-        jDateChooser1.setCalendar(null);
-        AddDateButton.setEnabled(false);
-        TimeComboBox.setSelectedItem("Time");
-        int itemCount = TimeComboBox.getItemCount();
-        for (int i = itemCount - 1; i > 0; i--) {
-            TimeComboBox.removeItemAt(i);
-        }
 
     }//GEN-LAST:event_JDocNamesActionPerformed
 
@@ -582,15 +605,31 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
     }//GEN-LAST:event_TimeComboBoxPopupMenuWillBecomeVisible
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        DateDetailTable D = new DateDetailTable("jdbc:mysql://localhost:3306/maindb", "root", "");
-        PatientTablee.setModel(D.getTableModelByName(NameTextField.getText()));
+        DateDetailTable s = new DateDetailTable("jdbc:mysql://localhost:3306/maindb", "root", "");
+        PatientTablee.setModel(s.getTableModelByName(NameTextField.getText()));
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        DateDetailTable D = new DateDetailTable("jdbc:mysql://localhost:3306/maindb", "root", "");
-        PatientTablee.setModel(D.getTableModelByPhone(PhoneTextField.getText()));
+        DateDetailTable s = new DateDetailTable("jdbc:mysql://localhost:3306/maindb", "root", "");
+        PatientTablee.setModel(s.getTableModelByPhone(PhoneTextField.getText()));
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void PatientTableePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_PatientTableePropertyChange
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_PatientTableePropertyChange
+
+    private void PatientTableeAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_PatientTableeAncestorAdded
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_PatientTableeAncestorAdded
+
+    private void PatientTableeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PatientTableeMouseClicked
+        // TODO add your handling code here:
+                        RemoveRowButton.setEnabled(true);
+
+    }//GEN-LAST:event_PatientTableeMouseClicked
 
     /**
      * @param args the command line arguments
@@ -638,6 +677,20 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
         for (String name : sn) {
             JDocNames.addItem(name);
         }
+                RemoveRowButton.setEnabled(false);
+    }
+
+    public void UpdateInf() {
+        jDateChooser1.setCalendar(null);
+        AddDateButton.setEnabled(false);
+        TimeComboBox.setSelectedItem("Time");
+        int itemCount = TimeComboBox.getItemCount();
+        for (int i = itemCount - 1; i > 0; i--) {
+            TimeComboBox.removeItemAt(i);
+        }
+        DateDetailTable s = new DateDetailTable("jdbc:mysql://localhost:3306/maindb", "root", "");
+        PatientTablee.setModel(s.getDateDetails());
+
     }
 
 
@@ -650,7 +703,6 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
     private javax.swing.JTextField PhoneTextField;
     private javax.swing.JButton RemoveRowButton;
     private javax.swing.JComboBox<String> TimeComboBox;
-    private javax.swing.JButton UpdateButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private com.toedter.calendar.JDateChooser jDateChooser1;

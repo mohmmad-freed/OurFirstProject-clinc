@@ -31,19 +31,15 @@ public class NameDoArr {
       ArrayList<String> a=new ArrayList<>();
       
       try {
-         // تحديد اسم قاعدة البيانات ومعلومات الاتصال
          String dbName = "maindb";
          String url = "jdbc:mysql://localhost/" + dbName;
          String user = "root";
          String password = "";
          
-         // إنشاء اتصال بقاعدة البيانات
          Connection conn = DriverManager.getConnection(url, user, password);
          
-         // إنشاء عبارة SQL لاسترداد بيانات DoName و DoPhone و DoEmail
          String query = "SELECT DoName FROM doctor";
          
-         // إنشاء عبارة Statement وتنفيذ الاستعلام
          Statement stmt = conn.createStatement();
          ResultSet rs = stmt.executeQuery(query);
          while(rs.next()){

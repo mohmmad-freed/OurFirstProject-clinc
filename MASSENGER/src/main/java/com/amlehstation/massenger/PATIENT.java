@@ -115,5 +115,40 @@ public class PATIENT extends PERSON {
             }
         }
     }
+public boolean deleteAppointment(String time, String date, String paName, String doName) {
+    Connection connection = null;
+    PreparedStatement statement = null;
+    boolean success = false;
+
+    try {
+        connection = DriverManager.getConnection(url + dbName, user, password);
+
+        String query = "DELETE FROM dates WHERE Time = ? AND Date = ? AND PaID = (SELECT PaID FROM patients WHERE PaName = ?) AND DoID = (SELECT DoID FROM doctor WHERE DoName = ?)";
+        statement = connection.prepareStatement(query);
+        statement.setString(1, time);
+        statement.setString(2, date);
+        statement.setString(3, paName);
+        statement.setString(4, doName);
+        int rowsAffected = statement.executeUpdate();
+
+        success = rowsAffected > 0;
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+        try {
+            if (statement != null) {
+                statement.close();
+            }
+            if (connection != null) {
+                connection.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    return success;
+}
+
 
 }

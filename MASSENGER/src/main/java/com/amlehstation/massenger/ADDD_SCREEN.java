@@ -736,7 +736,6 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/maindb", "root", "");
-                // إجراء فحص للتحقق مما إذا كان الاسم أو الرقم أو البريد الإلكتروني موجودين بالفعل في قاعدة البيانات
                 PreparedStatement checkStmt = con.prepareStatement("SELECT * FROM Doctor WHERE DoName = ? OR DoPhone = ? OR DoEmail = ?");
                 checkStmt.setString(1, JName.getText());
                 checkStmt.setString(2, JPhone.getText());
@@ -744,11 +743,9 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
                 ResultSet rs = checkStmt.executeQuery();
 
                 if (rs.next()) {
-                    // يتم عرض رسالة الخطأ إذا تم العثور على سجل بالفعل في قاعدة البيانات
                     JOptionPane.showMessageDialog(this, "Doctor name or phone or email already exists");
                 } else {
 
-                    // يتم إجراء إجراء الإدخال INSERT في قاعدة البيانات إذا لم يتم العثور على أي سجل متطابق
                     PreparedStatement insertStmt = con.prepareStatement("INSERT INTO Doctor (DoName, DoPhone, DoEmail, DoPass) VALUES (?, ?, ?, ?)");
                     String pass = new String(jPasswordField1.getPassword());
                     DOCTOR d = new DOCTOR();
@@ -765,22 +762,19 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
                     insertStmt.close();
                     String RM = "SELECT DoID FROM doctor WHERE DoPhone = ?";
                     PreparedStatement SearchDPhone = con.prepareStatement(RM);
-                    SearchDPhone.setString(1, d.getPhone()); // تعيين قيمة رقم الجوال
-                    ResultSet rsM = SearchDPhone.executeQuery(); // تنفيذ الاستعلام واسترجاع النتائج
+                    SearchDPhone.setString(1, d.getPhone()); 
+                    ResultSet rsM = SearchDPhone.executeQuery(); 
                     if (rsM.next()) {
                         doctorId = rsM.getInt("DoID");
                         System.out.println("Doctor Id: " + doctorId);
                     }
 
                     Schedule(doctorId);
-                    dispose();
                     ADMIN_SCREEN a = new ADMIN_SCREEN();
-                    a.show();
-                    a.setExtendedState(MAXIMIZED_BOTH);
+                    OPENCLOSE.closeAndOpen(this, a);
                     JOptionPane.showMessageDialog(this, "Successfully added");
                 }
 
-                // إغلاق الاتصال بقاعدة البيانات والكائن PreparedStatement
                 checkStmt.close();
                 con.close();
 
@@ -844,11 +838,9 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
     }
 
     private void Schedule(int DID) {
-        // تعريف وإعداد المصفوفة والقائمة
         String[] WorkingHours = {};
         ArrayList<String> workingHoursList = new ArrayList<String>(Arrays.asList(WorkingHours));
 
-// إضافة الأيام العملية وأوقات العمل للقائمة
         if (jSaturday.isSelected()) {
             workingHoursList.add("Saturday");
             workingHoursList.add(TimeConverter(SaturdayComboBoxFH.getSelectedItem().toString()) + ":" + (String) SaturdayComboBoxFM.getSelectedItem() + "-" + TimeConverter(SaturdayComboBoxTH.getSelectedItem().toString()) + ":" + (String) SaturdayComboBoxTM.getSelectedItem());
@@ -898,15 +890,12 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
             stmt = conn.prepareStatement("INSERT INTO schedule (DoID, DTime, day) VALUES (?, ?, ?)");
 
             for (int i = 0; i < quarterHours.length; i += 2) {
-                // تحويل الساعة إلى صيغة الوقت المطلوبة (hh:mm:ss)
                 String time = quarterHours[i + 1] + ":00";
 
-                // تعيين قيم الباراميترات
                 stmt.setInt(1, DID);
                 stmt.setString(2, time);
                 stmt.setString(3, quarterHours[i]);
 
-                // إدخال البيانات
                 stmt.executeUpdate();
             }
             conn.close();
@@ -928,25 +917,21 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
 
     ////////////////////////////////////////////////////////////////////////////////////التأكد من المعلومات/////////////////////////////////////////////////////////////////////
     private boolean validateFields() {
-        // فحص ما إذا كانت جميع الحقول مملوءة بشكل صحيح
 
         if (JName.getText().isEmpty() || JPhone.getText().isEmpty() || JEmail.getText().isEmpty() || jPasswordField1.getPassword().length == 0) {
             JOptionPane.showMessageDialog(this, "Please fill all required fields");
             return false;
         }
-        // فحص ما إذا كان رقم الهاتف يبدأ بـ 0 ويحتوي على 10 أو 14 رقمًا
         String phoneRegex = "^0[0-9]{9,12}$";
         if (!JPhone.getText().matches(phoneRegex)) {
             JOptionPane.showMessageDialog(this, "Please enter a valid phone number starting with 0 or +9** and consisting of 10 or 14 digits");
             return false;
         }
-        // فحص ما إذا كانت البريد الإلكتروني صالحة
         String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
         if (!JEmail.getText().matches(emailRegex)) {
             JOptionPane.showMessageDialog(this, "Please enter a valid email address");
             return false;
         }
-        // فحص ما إذا كانت كلمة المرور قد تم إدخالها
         if (new String(jPasswordField1.getPassword()).isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please enter a password");
             return false;

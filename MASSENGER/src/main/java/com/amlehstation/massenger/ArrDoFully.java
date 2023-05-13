@@ -21,7 +21,6 @@ public class ArrDoFully {
       ArrayList<String> a=new ArrayList<>();
       
 
-        // تعيين معلومات الاتصال بقاعدة البيانات
         String dbName = "maindb";
          String url = "jdbc:mysql://localhost/" + dbName;
          String user = "root";
@@ -30,14 +29,11 @@ public class ArrDoFully {
 
 
 
-        // قائمة لتخزين المواعيد
         ArrayList<String> appointments = new ArrayList<>();
 
         try {
-            // إنشاء اتصال بقاعدة البيانات
             Connection connection = DriverManager.getConnection(url, user, password);
 
-            // إعداد الاستعلام للحصول على المواعيد الخاصة بالدكتور
             String query = "SELECT Time FROM dates " +
                            "WHERE DoID IN (SELECT DoID FROM doctor WHERE DoName = ?) " +
                            "AND Date = ?";
@@ -45,7 +41,6 @@ public class ArrDoFully {
             statement.setString(1, doctorName1);
             statement.setString(2, searchDate1);
 
-            // تنفيذ الاستعلام واسترجاع النتائج
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 
@@ -54,7 +49,6 @@ public class ArrDoFully {
                 appointments.add(appointment);
             }
 
-            // إغلاق الاتصال بقاعدة البيانات
             resultSet.close();
             statement.close();
             connection.close();

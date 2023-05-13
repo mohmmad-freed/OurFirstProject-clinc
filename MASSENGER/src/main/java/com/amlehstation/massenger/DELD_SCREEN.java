@@ -249,9 +249,9 @@ public class DELD_SCREEN extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         try {
-           ADMIN_SCREEN a = new ADMIN_SCREEN();
+            ADMIN_SCREEN a = new ADMIN_SCREEN();
 
-        OPENCLOSE.closeAndOpen(this, a);
+            OPENCLOSE.closeAndOpen(this, a);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e);
         }
@@ -261,42 +261,53 @@ public class DELD_SCREEN extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
 
-     
-       try {
-    DoctorTable doctorTable = new DoctorTable();
-    DoctorTablee.setModel(doctorTable.getTableModelByName(JDName.getText()));
-} catch (Exception e) {
-    JOptionPane.showMessageDialog(this, e);
-}
-
+        try {
+            DoctorTable doctorTable = new DoctorTable();
+            DoctorTablee.setModel(doctorTable.getTableModelByName(JDName.getText()));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
 
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        try {            
-    DoctorTable doctorTable = new DoctorTable();
-    DefaultTableModel model = doctorTable.getTableModelByPhone(JDPhone.getText());
-    DoctorTablee.setModel(model);
-} catch (Exception e) {
-    JOptionPane.showMessageDialog(this, e);
-}
-
+        try {
+            DoctorTable doctorTable = new DoctorTable();
+            DefaultTableModel model = doctorTable.getTableModelByPhone(JDPhone.getText());
+            DoctorTablee.setModel(model);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
 
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-                int selectedRow = DoctorTablee.getSelectedRow();
-
-           if (selectedRow >= 0) {
-            String selectedValue = DoctorTablee.getValueAt(selectedRow, DoctorTablee.getColumn("Name").getModelIndex()).toString();
-            JOptionPane.showMessageDialog(this,selectedValue);
-        } else {
-            JOptionPane.showMessageDialog(this, "No Doctor selected");
-       }
+          String dbName = "maindb";
+    String url = "jdbc:mysql://localhost/";
+    String user = "root";
+    String password = "";
+    int selectedRow = DoctorTablee.getSelectedRow();
+    if (selectedRow >= 0) {
+        DOCTOR d = new DOCTOR(dbName, url, user, password);
+        String selectedValue = DoctorTablee.getValueAt(selectedRow, DoctorTablee.getColumn("Name").getModelIndex()).toString();
+        try {
+            boolean D = d.deleteDoctors(selectedValue);
+            if (D) {
+                JOptionPane.showMessageDialog(this, "Deleted" + selectedValue);
+            } else {
+                JOptionPane.showMessageDialog(this, "Failed to delete " + selectedValue);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error occurred while deleting " + selectedValue);
+        }
+    } else {
+        JOptionPane.showMessageDialog(this, "No Doctor selected");
+    }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void JDNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JDNameActionPerformed
@@ -336,7 +347,6 @@ public class DELD_SCREEN extends javax.swing.JFrame {
                 DELD_SCREEN delScreen = new DELD_SCREEN();
                 delScreen.setVisible(true);
 
-                // استدعاء الدالة start()
                 delScreen.start();
             }
         });

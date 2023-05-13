@@ -34,7 +34,6 @@ public class DateDetailTable {
         try {
             Connection conn = DriverManager.getConnection(dbURL, username, password);
             Statement stmt = conn.createStatement();
-//dates.Time,dates.Date,secrtary.SeName,doctor.DoName,patients.PaName
             String sql = "SELECT dates.Time,dates.Date,secrtary.SeName,doctor.DoName,patients.PaName "
                     + "FROM ((dates "
                     + "INNER JOIN patients ON dates.PaID = patients.PaID) "
@@ -74,7 +73,6 @@ public class DateDetailTable {
   public DefaultTableModel getTableModelByName(String name) {
     DefaultTableModel model = null;
     try {
-        // إنشاء اتصال بقاعدة البيانات
         Connection conn = DriverManager.getConnection(dbURL, username, password);
         name += "%";
         String sql = "SELECT dates.Time,dates.Date,secrtary.SeName,doctor.DoName,patients.PaName "
@@ -90,7 +88,6 @@ public class DateDetailTable {
         ResultSet rs = statement.executeQuery();
 
         model = new DefaultTableModel(new Object[][]{}, new String[]{"Time", "Date", "Secretary", "Doctor", "Patients"}) {
-            // تجاهل الدالة setValueAt لجعل الجدول لا يمكن تعديله
             @Override
             public void setValueAt(Object aValue, int row, int column) {}
         };
@@ -104,7 +101,6 @@ public class DateDetailTable {
             model.addRow(new Object[]{time, date, seName, doName, paName});
         }
 
-        // إغلاق الاتصال والنتائج
         rs.close();
         statement.close();
         conn.close();
@@ -115,19 +111,18 @@ public class DateDetailTable {
         System.out.println("VendorError: " + ex.getErrorCode());
     }
 
-    // ترتيب البيانات حسب التاريخ والوقت
-    if (model != null) {
-        JTable table = new JTable(model);
-        TableRowSorter<TableModel> sorter = new TableRowSorter<>(table.getModel());
-        sorter.setSortKeys(
-                java.util.List.of(
-                        new RowSorter.SortKey(1, SortOrder.ASCENDING),
-                        new RowSorter.SortKey(0, SortOrder.ASCENDING)
-                )
-        );
-        table.setRowSorter(sorter);
-        model = (DefaultTableModel) table.getModel();
-    }
+   if (model != null) {
+    JTable table = new JTable(model);
+    TableRowSorter<TableModel> sorter = new TableRowSorter<>(table.getModel());
+    sorter.setSortKeys(
+            java.util.List.of(
+                    new RowSorter.SortKey(1, SortOrder.ASCENDING), // ترتيب حسب العمود 1 (التاريخ)
+                    new RowSorter.SortKey(0, SortOrder.ASCENDING) // ترتيب حسب العمود 0 (الوقت)
+            )
+    );
+    table.setRowSorter(sorter);
+    model = (DefaultTableModel) table.getModel();
+}
 
     return model;
 }
@@ -135,7 +130,6 @@ public class DateDetailTable {
 public DefaultTableModel getTableModelByPhone(String phone) {
     DefaultTableModel model = null;
     try {
-        // إنشاء اتصال بقاعدة البيانات
         Connection conn = DriverManager.getConnection(dbURL, username, password);
         phone += "%";
         String sql = "SELECT dates.Time,dates.Date,secrtary.SeName,doctor.DoName,patients.PaName "
@@ -151,7 +145,6 @@ public DefaultTableModel getTableModelByPhone(String phone) {
         ResultSet rs = statement.executeQuery();
 
         model = new DefaultTableModel(new Object[][]{}, new String[]{"Time", "Date", "Secretary", "Doctor", "Patients"}) {
-            // تجاهل الدالة setValueAt لجعل الجدول لا يمكن تعديله
             @Override
             public void setValueAt(Object aValue, int row, int column) {}
         };
@@ -165,7 +158,6 @@ public DefaultTableModel getTableModelByPhone(String phone) {
             model.addRow(new Object[]{time, date, seName, doName, paName});
         }
 
-        // إغلاق الاتصال والنتائج
         rs.close();
         statement.close();
         conn.close();
@@ -176,7 +168,6 @@ public DefaultTableModel getTableModelByPhone(String phone) {
         System.out.println("VendorError: " + ex.getErrorCode());
     }
 
-    // ترتيب البيانات حسب التاريخ والوقت
     if (model != null) {
         JTable table = new JTable(model);
         TableRowSorter<TableModel> sorter = new TableRowSorter<>(table.getModel());

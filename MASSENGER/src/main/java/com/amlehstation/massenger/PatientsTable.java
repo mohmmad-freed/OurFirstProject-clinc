@@ -16,7 +16,8 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author ASD
  */
-public class SecretaryTable {
+public class PatientsTable {
+    
     public DefaultTableModel getTableModel() {
       DefaultTableModel model = null;
       try {
@@ -27,18 +28,17 @@ public class SecretaryTable {
          
          Connection conn = DriverManager.getConnection(url, user, password);
          
-         String query = "SELECT SeName, SePhone, SeEmail FROM secrtary";
+         String query = "SELECT PaName , PaPhone FROM patients";
          
          Statement stmt = conn.createStatement();
          ResultSet rs = stmt.executeQuery(query);
          
-         model = new DefaultTableModel(new String[]{"Name", "Phone", "Email"}, 0);
+         model = new DefaultTableModel(new String[]{"Phone", "Name"}, 0);
          
          while (rs.next()) {
-            String doName = rs.getString("SeName");
-            String doPhone = rs.getString("SePhone");
-            String doEmail = rs.getString("SeEmail");
-            model.addRow(new Object[]{doName, doPhone, doEmail});
+            String doPhone = rs.getString("PaPhone");
+            String doName = rs.getString("PaName");
+            model.addRow(new Object[]{doPhone, doName});
          }
          
          rs.close();
@@ -53,7 +53,8 @@ public class SecretaryTable {
       
       return model;
    }
-public DefaultTableModel getTableModelByName(String name) {
+    
+    public DefaultTableModel getTableModelByName(String name) {
     DefaultTableModel model = null;
     try {
         String dbName = "maindb";
@@ -62,23 +63,23 @@ public DefaultTableModel getTableModelByName(String name) {
         String password = "";
 
         Connection conn = DriverManager.getConnection(url, user, password);
+        name +="%";
 
-        String query = "SELECT DoName, DoPhone, DoEmail FROM doctor WHERE DoName = ?";
+        String query = "SELECT PaName , PaPhone FROM patients WHERE PaName LIKE ?";
         PreparedStatement pst = conn.prepareStatement(query);
         pst.setString(1, name);
 
         ResultSet rs = pst.executeQuery();
 
-        model = new DefaultTableModel(new Object[][]{}, new String[]{"Name", "Phone", "Email"}) {
+        model = new DefaultTableModel(new Object[][]{}, new String[]{"Phone", "Name"}) {
             @Override
             public void setValueAt(Object aValue, int row, int column) {}
         };
 
         while (rs.next()) {
-            String doName = rs.getString("DoName");
-            String doPhone = rs.getString("DoPhone");
-            String doEmail = rs.getString("DoEmail");
-            model.addRow(new Object[]{doName, doPhone, doEmail});
+            String PaName = rs.getString("PaName");
+            String PaPhone = rs.getString("PaPhone");
+            model.addRow(new Object[]{PaPhone,PaName});
         }
 
         rs.close();
@@ -93,8 +94,7 @@ public DefaultTableModel getTableModelByName(String name) {
 
     return model;
 }
-
-public DefaultTableModel getTableModelByPhone(String phone) {
+    public DefaultTableModel getTableModelByPhone(String phone) {
     DefaultTableModel model = null;
     try {
         String dbName = "maindb";
@@ -103,23 +103,23 @@ public DefaultTableModel getTableModelByPhone(String phone) {
         String password = "";
 
         Connection conn = DriverManager.getConnection(url, user, password);
+        phone +="%";
 
-        String query = "SELECT DoName, DoPhone, DoEmail FROM doctor WHERE DoPhone = ?";
+        String query = "SELECT PaName , PaPhone FROM patients WHERE PaPhone LIKE ?";
         PreparedStatement pst = conn.prepareStatement(query);
         pst.setString(1, phone);
 
         ResultSet rs = pst.executeQuery();
 
-        model = new DefaultTableModel(new Object[][]{}, new String[]{"Name", "Phone", "Email"}) {
+        model = new DefaultTableModel(new Object[][]{}, new String[]{"Phone", "Name"}) {
             @Override
             public void setValueAt(Object aValue, int row, int column) {}
         };
 
         while (rs.next()) {
-            String doName = rs.getString("DoName");
-            String doPhone = rs.getString("DoPhone");
-            String doEmail = rs.getString("DoEmail");
-            model.addRow(new Object[]{doName, doPhone, doEmail});
+            String PaName = rs.getString("PaName");
+            String PaPhone = rs.getString("PaPhone");
+            model.addRow(new Object[]{PaPhone,PaName});
         }
 
         rs.close();
@@ -134,6 +134,5 @@ public DefaultTableModel getTableModelByPhone(String phone) {
 
     return model;
 }
-
     
 }

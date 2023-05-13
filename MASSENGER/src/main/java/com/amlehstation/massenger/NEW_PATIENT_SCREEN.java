@@ -333,17 +333,17 @@ public class NEW_PATIENT_SCREEN extends javax.swing.JFrame {
                 System.out.println(time.toString());
 
                 PATIENT p = new PATIENT(dbName, url, user, password);
-               boolean success= p.addPatient(patientName, patientPhone);
+                boolean success = p.addPatient(patientName, patientPhone);
 
-            boolean success2 =  p.addAppointment(patientName, doctorName, secretaryName, formattedDate, time.toString());
-            if (success2&&success) {
-                JOptionPane.showMessageDialog(this, "تمت الإضافة بنجاح!");
-            } else {
-                JOptionPane.showMessageDialog(this, "حدثت مشكلة أثناء الإضافة. يُرجى المحاولة مرة أخرى.");
+                boolean success2 = p.addAppointment(patientName, doctorName, secretaryName, formattedDate, time.toString());
+                if (success2 && success) {
+                    JOptionPane.showMessageDialog(this, "تمت الإضافة بنجاح!");
+                } else {
+                    JOptionPane.showMessageDialog(this, "حدثت مشكلة أثناء الإضافة. يُرجى المحاولة مرة أخرى.");
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "حدثت مشكلة أثناء الإضافة:\n" + e.getMessage());
             }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "حدثت مشكلة أثناء الإضافة:\n" + e.getMessage());
-        }
         }
 
     }//GEN-LAST:event_AddButtonActionPerformed
@@ -445,8 +445,8 @@ public class NEW_PATIENT_SCREEN extends javax.swing.JFrame {
     }
 
     public void start() {
-        DateDetailTable s = new DateDetailTable("jdbc:mysql://localhost:3306/maindb", "root", "");
-        PatientTablee.setModel(s.getDateDetails());
+        PatientsTable s = new PatientsTable();
+        PatientTablee.setModel(s.getTableModel());
         AddButton.setEnabled(false);
         NameDoArr d = new NameDoArr();
         ArrayList<String> sn = new ArrayList<>();

@@ -213,9 +213,12 @@ public class ADMIN_SCREEN extends javax.swing.JFrame {
     private void AddDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddDActionPerformed
         // TODO add your handling code here:
         ADDD_SCREEN addd = new ADDD_SCREEN();
-        dispose();
-        addd.show();
-        addd.setExtendedState(MAXIMIZED_BOTH);
+        try {
+            DELD_SCREEN delD = new DELD_SCREEN();
+            OPENCLOSE.closeAndOpen(this, addd);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
 
     }//GEN-LAST:event_AddDActionPerformed
 
@@ -223,13 +226,8 @@ public class ADMIN_SCREEN extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         try {
-
             DELD_SCREEN delD = new DELD_SCREEN();
-
-            delD.start();
-            dispose();
-            delD.setExtendedState(MAXIMIZED_BOTH);
-            delD.show();
+            OPENCLOSE.closeAndOpen(this, delD);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e);
         }

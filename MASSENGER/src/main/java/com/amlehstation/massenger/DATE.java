@@ -12,7 +12,7 @@ import java.time.Month;
 // setDay(int) , getDate() <-- methods
 public class DATE {
    private int time;
-    private LocalDate date; // ex: LocalDate date = LocalDate.of(2023, 5, 5);
+    private LocalDate date; 
     private int meetingDuration;
 
     public void DATE( int year,int month,int day,int hours, int minutes, int meetingDuration) {
