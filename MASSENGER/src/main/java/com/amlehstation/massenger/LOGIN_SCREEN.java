@@ -237,7 +237,7 @@ public class LOGIN_SCREEN extends javax.swing.JFrame {
         OPENCLOSE.closeAndOpen(this, a);
         } else if (u == 3) {
 
-            DOCTOR_SCREEN a = new DOCTOR_SCREEN();
+            DOCTOR_SCREEN a = new DOCTOR_SCREEN(userName.getName());
         OPENCLOSE.closeAndOpen(this, a);
 
         } else if (u == 4) {
@@ -246,7 +246,7 @@ public class LOGIN_SCREEN extends javax.swing.JFrame {
         OPENCLOSE.closeAndOpen(this, a);
             
         }
-
+Logger.log("Logged in");
     }//GEN-LAST:event_loginActionPerformed
 
     private void passwordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFocusGained

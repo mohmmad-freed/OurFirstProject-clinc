@@ -183,6 +183,63 @@ public DefaultTableModel getTableModelByPhone(String phone) {
 
     return model;
 }
+public DefaultTableModel getTableModelByDoctorPhone(String doctorPhone) {
+    DefaultTableModel model = null;
+    try {
+        Connection conn = DriverManager.getConnection(dbURL, username, password);
+        doctorPhone += "%";
+        String sql = "SELECT dates.Time, dates.Date, secrtary.SeName, doctors.DoName, patients.PaName "
+                + "FROM ((dates "
+                + "INNER JOIN patients ON dates.PaID = patients.PaID) "
+                + "INNER JOIN doctors ON dates.DoID = doctors.DoID) "
+                + "INNER JOIN secrtary ON dates.SeID = secrtary.SeID "
+                + "WHERE doctors.DoPhone LIKE ?";
+
+        PreparedStatement statement = conn.prepareStatement(sql);
+        statement.setString(1, doctorPhone);
+
+        ResultSet rs = statement.executeQuery();
+
+        model = new DefaultTableModel(new Object[][]{}, new String[]{"Time", "Date", "Secretary", "Doctor", "Patients"}) {
+            @Override
+            public void setValueAt(Object aValue, int row, int column) {}
+        };
+
+        while (rs.next()) {
+            String time = rs.getString("Time");
+            String date = rs.getString("Date");
+            String seName = rs.getString("SeName");
+            String doName = rs.getString("DoName");
+            String paName = rs.getString("PaName");
+            model.addRow(new Object[]{time, date, seName, doName, paName});
+        }
+
+        rs.close();
+        statement.close();
+        conn.close();
+
+    } catch (SQLException ex) {
+        System.out.println("SQLException: " + ex.getMessage());
+        System.out.println("SQLState: " + ex.getSQLState());
+        System.out.println("VendorError: " + ex.getErrorCode());
+    }
+
+    if (model != null) {
+        JTable table = new JTable(model);
+        TableRowSorter<TableModel> sorter = new TableRowSorter<>(table.getModel());
+        sorter.setSortKeys(
+                java.util.List.of(
+                        new RowSorter.SortKey(1, SortOrder.ASCENDING),
+                        new RowSorter.SortKey(0, SortOrder.ASCENDING)
+                )
+        );
+        table.setRowSorter(sorter);
+        model = (DefaultTableModel) table.getModel();
+    }
+
+    return model;
+}
+
 
     
 }

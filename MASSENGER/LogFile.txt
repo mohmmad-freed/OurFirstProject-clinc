@@ -1,0 +1,65 @@
+[2023-05-14 09:58:00] Logged in
+[2023-05-14 09:58:31] selected (Add Doctor) option
+[2023-05-14 10:00:50] new doctor:  Name: احمد نشيط  phone: 0595353123  Email: ahh@gmail.com
+[2023-05-14 10:00:53] selected (Del Doctor) option
+[2023-05-14 10:00:56] canceled operation
+[2023-05-14 10:01:02] Logged out
+[2023-05-14 10:03:20] Logged in
+[2023-05-14 10:03:23] Selected new patient option
+[2023-05-14 10:04:09] new patient appiontment:  Name: محمد  phone: 0594073157  Doctor: احمد نشيط
+Date: 2023-05-07  Time: 10:00:00
+[2023-05-14 10:04:39] canceled operation
+[2023-05-14 10:04:47] Selected new patient option
+[2023-05-14 10:04:48] canceled operation
+[2023-05-14 10:04:50] Selected old patient option
+[2023-05-14 10:04:56] canceled operation
+[2023-05-14 10:04:59] Selected new patient option
+[2023-05-14 10:05:08] canceled operation
+[2023-05-14 10:05:09] Selected old patient option
+[2023-05-14 10:05:30] canceled operation
+[2023-05-14 10:06:40] Selected new patient option
+[2023-05-14 10:07:08] new patient appiontment:  Name: محمد2  phone: 0594073156  Doctor: احمد نشيط
+Date: 2023-05-07  Time: 10:00:00
+[2023-05-14 10:07:23] canceled operation
+[2023-05-14 10:07:26] Selected old patient option
+[2023-05-14 10:10:39] canceled operation
+[2023-05-14 10:10:41] Selected new patient option
+[2023-05-14 10:10:56] new patient appiontment:  Name: شس  phone: 0798465213  Doctor: احمد نشيط
+Date: 2023-05-07  Time: 10:30:00
+[2023-05-14 10:19:03] new patient appiontment:  Name: شس2  phone: 0798465212  Doctor: احمد نشيط
+Date: 2023-05-07  Time: 10:30:00
+[2023-05-14 10:19:04] canceled operation
+[2023-05-14 10:19:18] Selected old patient option
+[2023-05-14 13:20:51] Logged in
+[2023-05-14 13:21:20] Logged in
+[2023-05-14 13:21:24] selected (Add Doctor) option
+[2023-05-14 13:21:28] canceled operation
+[2023-05-14 13:21:50] selected (Del Doctor) option
+[2023-05-14 13:22:08] canceled operation
+[2023-05-14 13:22:09] Logged out
+[2023-05-14 13:22:46] Selected old patient option
+[2023-05-14 13:23:00] canceled operation
+[2023-05-14 13:23:01] Selected new patient option
+[2023-05-14 13:23:16] canceled operation
+[2023-05-14 13:23:18] Logged out
+[2023-05-14 13:46:01] Logged in
+[2023-05-14 13:46:18] selected (Add Doctor) option
+[2023-05-14 13:48:00] new doctor:  Name: دكتور1  phone: 05987654321  Email: oc@gmail.com
+[2023-05-14 13:48:06] Logged out
+[2023-05-14 13:48:24] Logged in
+[2023-05-14 13:48:54] Logged in
+[2023-05-14 13:49:22] Logged in
+[2023-05-14 13:49:26] Selected new patient option
+[2023-05-14 13:51:44] new patient appiontment:  Name: مريض1  phone: 0987654321  Doctor: دكتور1
+Date: 2023-05-01  Time: 10:00:00
+[2023-05-14 13:51:45] canceled operation
+[2023-05-14 13:51:48] Selected old patient option
+[2023-05-14 13:51:50] canceled operation
+[2023-05-14 13:51:58] Selected old patient option
+[2023-05-14 13:53:45] Selected old patient option
+[2023-05-14 13:53:58] canceled operation
+[2023-05-14 13:54:00] Logged out
+[2023-05-14 13:54:17] Logged in
+[2023-05-14 13:54:57] Logged in
+[2023-05-14 13:55:10] Logged in
+[2023-05-14 14:09:25] Logged in

@@ -338,6 +338,8 @@ public class NEW_PATIENT_SCREEN extends javax.swing.JFrame {
                 boolean success2 = p.addAppointment(patientName, doctorName, secretaryName, formattedDate, time.toString());
                 if (success2 && success) {
                     JOptionPane.showMessageDialog(this, "تمت الإضافة بنجاح!");
+                    Logger.log("new patient appiontment:  Name: "+nameTextField.getText()+"  phone: "+Phone.getText()+"  Doctor: "+JDocNames.getSelectedItem()+"\nDate: "+formattedDate+"  Time: "+TimeComboBox.getSelectedItem());
+                    Update();
                 } else {
                     JOptionPane.showMessageDialog(this, "حدثت مشكلة أثناء الإضافة. يُرجى المحاولة مرة أخرى.");
                 }
@@ -345,16 +347,14 @@ public class NEW_PATIENT_SCREEN extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "حدثت مشكلة أثناء الإضافة:\n" + e.getMessage());
             }
         }
-         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
-                String formattedDate = dateFormat.format(jDateChooser2.getDate());
-                System.out.println(formattedDate);
-        Logger.log("new patient appiontment:  Name: "+nameTextField.getText()+"  phone: "+Phone.getText()+"  Doctor: "+JDocNames.getSelectedItem()+"\nDate: "+formattedDate+"  Time: "+TimeComboBox.getSelectedItem());
+
 
     }//GEN-LAST:event_AddButtonActionPerformed
 
     private void CancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelButtonActionPerformed
         SECRETARY_SCREEN SecScreen = new SECRETARY_SCREEN();
         OPENCLOSE.closeAndOpen(this, SecScreen);
+        Logger.log("canceled operation");
     }//GEN-LAST:event_CancelButtonActionPerformed
 
     private void PhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PhoneActionPerformed
@@ -367,14 +367,8 @@ public class NEW_PATIENT_SCREEN extends javax.swing.JFrame {
 
     private void JDocNamesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JDocNamesActionPerformed
         // TODO add your handling code here:
-
-        jDateChooser2.setCalendar(null);
-        AddButton.setEnabled(false);
-        TimeComboBox.setSelectedItem("Time");
-        int itemCount = TimeComboBox.getItemCount();
-        for (int i = itemCount - 1; i > 0; i--) {
-            TimeComboBox.removeItemAt(i);
-        }
+Update();
+        
 
     }//GEN-LAST:event_JDocNamesActionPerformed
 
@@ -476,6 +470,17 @@ public class NEW_PATIENT_SCREEN extends javax.swing.JFrame {
         return true;
     }
 
+    public void Update(){
+    
+    
+    jDateChooser2.setCalendar(null);
+        AddButton.setEnabled(false);
+        TimeComboBox.setSelectedItem("Time");
+        int itemCount = TimeComboBox.getItemCount();
+        for (int i = itemCount - 1; i > 0; i--) {
+            TimeComboBox.removeItemAt(i);
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddButton;
     private javax.swing.JButton CancelButton;

@@ -103,10 +103,25 @@ public class ADMIN_SCREEN extends javax.swing.JFrame {
         secT.setText("Secretary ");
 
         jButton3.setText("Add Secertary");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Update Secertary");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("DEL Secertary");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("DEL Doctor");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -116,6 +131,11 @@ public class ADMIN_SCREEN extends javax.swing.JFrame {
         });
 
         jButton2.setText("Update Doctor");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         AddD.setText("Add Doctor");
         AddD.addActionListener(new java.awt.event.ActionListener() {
@@ -215,8 +235,10 @@ public class ADMIN_SCREEN extends javax.swing.JFrame {
         try {
             DELD_SCREEN delD = new DELD_SCREEN();
             OPENCLOSE.closeAndOpen(this, addd);
+            Logger.log("selected (Add Doctor) option");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e);
+            Logger.log("selected (Add Doctor) option (Failed)");
         }
 
     }//GEN-LAST:event_AddDActionPerformed
@@ -227,8 +249,10 @@ public class ADMIN_SCREEN extends javax.swing.JFrame {
         try {
             DELD_SCREEN delD = new DELD_SCREEN();
             OPENCLOSE.closeAndOpen(this, delD);
+            Logger.log("selected (Del Doctor) option");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e);
+             Logger.log("selected (Del Doctor) option (failed)");
         }
 
 
@@ -238,7 +262,24 @@ public class ADMIN_SCREEN extends javax.swing.JFrame {
         // TODO add your handling code here:
         LOGIN_SCREEN a = new LOGIN_SCREEN();
         OPENCLOSE.closeAndOpen(this, a);
+        Logger.log("Logged out");
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+Logger.log("selected (Update Doctor) option");        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+ Logger.log("selected (Add Secretary) option");        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+ Logger.log("selected (Update Secretary) option");        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+ Logger.log("selected (Del Secretary) option");        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments

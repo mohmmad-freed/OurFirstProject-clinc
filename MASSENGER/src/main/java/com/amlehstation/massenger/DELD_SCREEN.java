@@ -255,7 +255,7 @@ public class DELD_SCREEN extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e);
         }
-
+Logger.log("canceled operation");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -264,8 +264,10 @@ public class DELD_SCREEN extends javax.swing.JFrame {
         try {
             DoctorTable doctorTable = new DoctorTable();
             DoctorTablee.setModel(doctorTable.getTableModelByName(JDName.getText()));
+            Logger.log("Searched for doctor name");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e);
+            Logger.log("Searched for doctor name (failed)");
         }
 
 
@@ -277,8 +279,10 @@ public class DELD_SCREEN extends javax.swing.JFrame {
             DoctorTable doctorTable = new DoctorTable();
             DefaultTableModel model = doctorTable.getTableModelByPhone(JDPhone.getText());
             DoctorTablee.setModel(model);
+            Logger.log("Searched for doctor phone");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e);
+            Logger.log("Searched for doctor phone (failed)");
         }
 
 
@@ -298,15 +302,19 @@ public class DELD_SCREEN extends javax.swing.JFrame {
             boolean D = d.deleteDoctors(selectedValue);
             if (D) {
                 JOptionPane.showMessageDialog(this, "Deleted" + selectedValue);
+                Logger.log("Deleted Doctor" );
             } else {
                 JOptionPane.showMessageDialog(this, "Failed to delete " + selectedValue);
+                Logger.log("Deleted Doctor (failed)" );
             }
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Error occurred while deleting " + selectedValue);
+              Logger.log("Deleted Doctor (failed)" );
         }
     } else {
         JOptionPane.showMessageDialog(this, "No Doctor selected");
+          Logger.log("Deleted Doctor (failed: no selected doctor)" );
     }
     }//GEN-LAST:event_jButton4ActionPerformed
 

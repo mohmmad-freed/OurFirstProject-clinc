@@ -420,6 +420,7 @@ public class OLD_PATIENT_SCREEN extends javax.swing.JFrame {
     private void CancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelButtonActionPerformed
         SECRETARY_SCREEN SecSC = new SECRETARY_SCREEN();
         OPENCLOSE.closeAndOpen(this, SecSC);
+        com.amlehstation.massenger.Logger.log("canceled operation");
     }//GEN-LAST:event_CancelButtonActionPerformed
 
     private void NameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NameTextFieldActionPerformed

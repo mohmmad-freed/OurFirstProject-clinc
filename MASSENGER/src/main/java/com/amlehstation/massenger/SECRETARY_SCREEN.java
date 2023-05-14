@@ -198,17 +198,20 @@ public class SECRETARY_SCREEN extends javax.swing.JFrame {
     private void NewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewButtonActionPerformed
        NEW_PATIENT_SCREEN NewPatientSC =new NEW_PATIENT_SCREEN() ;
        OPENCLOSE.closeAndOpen(this, NewPatientSC);
+       Logger.log("Selected new patient option");
     }//GEN-LAST:event_NewButtonActionPerformed
 
     private void OldButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OldButtonActionPerformed
      OLD_PATIENT_SCREEN OldPatientSC =new   OLD_PATIENT_SCREEN();
      OPENCLOSE.closeAndOpen(this,OldPatientSC);
+     Logger.log("Selected old patient option");
     }//GEN-LAST:event_OldButtonActionPerformed
 
     private void LogOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogOutButtonActionPerformed
         LOGIN_SCREEN loginSC = new LOGIN_SCREEN() ;
        
         OPENCLOSE.closeAndOpen(this,loginSC);
+        Logger.log("Logged out");
     }//GEN-LAST:event_LogOutButtonActionPerformed
 
     /**

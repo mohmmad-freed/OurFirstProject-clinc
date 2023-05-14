@@ -792,7 +792,7 @@ Logger.log("new doctor:  Name: "+JName.getText()+"  phone: "+JPhone.getText()+" 
         // TODO add your handling code here:
         ADMIN_SCREEN a = new ADMIN_SCREEN();
         OPENCLOSE.closeAndOpen(this, a);
-
+Logger.log("canceled operation");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jSundayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSundayActionPerformed
