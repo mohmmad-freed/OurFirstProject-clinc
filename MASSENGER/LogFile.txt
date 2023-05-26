@@ -121,3 +121,14 @@ Date: 2023-05-07  Time: ٠٩:١٥:٠٠
 [2023-05-26 15:12:14] Logged out from docrtor0593207350
 [2023-05-26 15:12:14] Logged in
 [2023-05-26 15:12:41] Logged out from docrtor
+[2023-05-26 16:47:48] selected (Add Doctor) option
+[2023-05-26 16:47:50] canceled operation
+[2023-05-26 16:54:32] canceled operation
+[2023-05-26 16:57:37] selected (Del Doctor) option
+[2023-05-26 16:57:40] canceled operation
+[2023-05-26 16:57:59] canceled operation
+[2023-05-26 16:58:05] Selected new patient option
+[2023-05-26 16:59:30] selected (Add Doctor) option
+[2023-05-26 16:59:31] canceled operation
+[2023-05-26 17:02:28] selected (Add Doctor) option
+[2023-05-26 17:02:29] canceled operation

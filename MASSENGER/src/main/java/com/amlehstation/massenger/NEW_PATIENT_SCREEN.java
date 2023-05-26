@@ -205,6 +205,7 @@ public class NEW_PATIENT_SCREEN extends javax.swing.JFrame {
                 .addContainerGap(83, Short.MAX_VALUE))
         );
 
+        PatientTablee.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         PatientTablee.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

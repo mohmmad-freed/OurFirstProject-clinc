@@ -229,24 +229,24 @@ public class LOGIN_SCREEN extends javax.swing.JFrame {
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
         // TODO add your handling code here:
-        int u=0;
+        int u = 0;
         u = checkUser();
         if (u == 2) {
 
             SECRETARY_SCREEN a = new SECRETARY_SCREEN();
-        OPENCLOSE.closeAndOpen(this, a);
+            OPENCLOSE.closeAndOpen(this, a);
         } else if (u == 3) {
 
             DOCTOR_SCREEN a = new DOCTOR_SCREEN(userName.getText());
-        OPENCLOSE.closeAndOpen(this, a);
+            OPENCLOSE.closeAndOpen(this, a);
 
         } else if (u == 4) {
 
             ADMIN_SCREEN a = new ADMIN_SCREEN();
-        OPENCLOSE.closeAndOpen(this, a);
-            
+            OPENCLOSE.closeAndOpen(this, a);
+
         }
-Logger.log("Logged in");
+        Logger.log("Logged in");
     }//GEN-LAST:event_loginActionPerformed
 
     private void passwordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFocusGained

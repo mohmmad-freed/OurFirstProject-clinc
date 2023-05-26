@@ -43,6 +43,7 @@ public class DOCTOR_SCREEN extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1719, 790));
 
+        PatientTablee.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         PatientTablee.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
