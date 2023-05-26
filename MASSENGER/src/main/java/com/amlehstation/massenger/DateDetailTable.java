@@ -188,12 +188,12 @@ public DefaultTableModel getTableModelByDoctorPhone(String doctorPhone) {
     try {
         Connection conn = DriverManager.getConnection(dbURL, username, password);
         doctorPhone += "%";
-        String sql = "SELECT dates.Time, dates.Date, secrtary.SeName, doctors.DoName, patients.PaName "
+        String sql = "SELECT dates.Time, dates.Date, secrtary.SeName, doctor.DoName, patients.PaName "
                 + "FROM ((dates "
                 + "INNER JOIN patients ON dates.PaID = patients.PaID) "
-                + "INNER JOIN doctors ON dates.DoID = doctors.DoID) "
+                + "INNER JOIN doctor ON dates.DoID = doctor.DoID) "
                 + "INNER JOIN secrtary ON dates.SeID = secrtary.SeID "
-                + "WHERE doctors.DoPhone LIKE ?";
+                + "WHERE doctor.DoPhone LIKE ?";
 
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.setString(1, doctorPhone);

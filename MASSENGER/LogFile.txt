@@ -63,3 +63,61 @@ Date: 2023-05-01  Time: 10:00:00
 [2023-05-14 13:54:57] Logged in
 [2023-05-14 13:55:10] Logged in
 [2023-05-14 14:09:25] Logged in
+[2023-05-26 14:08:57] Logged in
+[2023-05-26 14:09:20] Logged in
+[2023-05-26 14:10:26] Logged in
+[2023-05-26 14:10:40] Logged out from docrtornull
+[2023-05-26 14:10:40] Logged in
+[2023-05-26 14:15:16] Logged in
+[2023-05-26 14:15:30] Logged in
+[2023-05-26 14:15:40] selected (Add Doctor) option
+[2023-05-26 14:16:36] new doctor:  Name: دكتور2  phone: 0123456789  Email: mh.com
+[2023-05-26 14:16:45] new doctor:  Name: دكتور2  phone: 0123456789  Email: mh@gmail.com
+[2023-05-26 14:16:46] selected (Del Doctor) option
+[2023-05-26 14:16:50] Deleted Doctor
+[2023-05-26 14:16:52] canceled operation
+[2023-05-26 14:16:53] selected (Del Doctor) option
+[2023-05-26 14:16:54] canceled operation
+[2023-05-26 14:16:58] Logged out
+[2023-05-26 14:17:15] Logged in
+[2023-05-26 14:17:26] Selected new patient option
+[2023-05-26 14:18:05] new patient appiontment:  Name: patient2  phone: 0159753468  Doctor: محمد فريد
+Date: 2023-05-08  Time: ١٠:٠٠:٠٠
+[2023-05-26 14:18:06] canceled operation
+[2023-05-26 14:18:11] Selected old patient option
+[2023-05-26 14:18:27] Removed Appointment
+[2023-05-26 14:18:28] canceled operation
+[2023-05-26 14:18:30] Logged out
+[2023-05-26 14:46:08] Logged out from docrtornull
+[2023-05-26 14:46:08] Logged in
+[2023-05-26 14:48:07] Logged in
+[2023-05-26 14:48:39] Logged out from docrtor0593207350
+[2023-05-26 14:48:39] Logged in
+[2023-05-26 14:54:47] Logged in
+[2023-05-26 14:54:59] Logged in
+[2023-05-26 14:55:01] selected (Add Doctor) option
+[2023-05-26 14:55:04] canceled operation
+[2023-05-26 14:55:19] selected (Add Doctor) option
+[2023-05-26 14:55:45] canceled operation
+[2023-05-26 14:55:48] Logged out
+[2023-05-26 15:08:31] Logged in
+[2023-05-26 15:08:36] selected (Add Doctor) option
+[2023-05-26 15:09:26] new doctor:  Name: دكتور2  phone: 013246578  Email: mbd@gmail.com
+[2023-05-26 15:09:31] new doctor:  Name: دكتور2  phone: 0132465789  Email: mbd@gmail.com
+[2023-05-26 15:09:32] selected (Del Doctor) option
+[2023-05-26 15:09:36] Deleted Doctor
+[2023-05-26 15:09:37] canceled operation
+[2023-05-26 15:09:40] Logged out
+[2023-05-26 15:10:05] Logged in
+[2023-05-26 15:10:25] Logged in
+[2023-05-26 15:10:30] Selected new patient option
+[2023-05-26 15:10:58] new patient appiontment:  Name: 3  phone: 05987654321  Doctor: محمد فريد
+Date: 2023-05-07  Time: ٠٩:١٥:٠٠
+[2023-05-26 15:10:59] canceled operation
+[2023-05-26 15:11:02] Selected old patient option
+[2023-05-26 15:11:37] Removed Appointment
+[2023-05-26 15:11:38] canceled operation
+[2023-05-26 15:11:43] Logged out
+[2023-05-26 15:12:14] Logged out from docrtor0593207350
+[2023-05-26 15:12:14] Logged in
+[2023-05-26 15:12:41] Logged out from docrtor

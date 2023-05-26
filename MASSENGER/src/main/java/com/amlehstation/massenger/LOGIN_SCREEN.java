@@ -237,7 +237,7 @@ public class LOGIN_SCREEN extends javax.swing.JFrame {
         OPENCLOSE.closeAndOpen(this, a);
         } else if (u == 3) {
 
-            DOCTOR_SCREEN a = new DOCTOR_SCREEN(userName.getName());
+            DOCTOR_SCREEN a = new DOCTOR_SCREEN(userName.getText());
         OPENCLOSE.closeAndOpen(this, a);
 
         } else if (u == 4) {

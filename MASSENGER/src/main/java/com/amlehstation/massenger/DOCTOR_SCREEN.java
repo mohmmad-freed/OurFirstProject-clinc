@@ -16,11 +16,13 @@ public class DOCTOR_SCREEN extends javax.swing.JFrame {
      * Creates new form USER_SCREEN
      */
     String docPhone;
+
     public DOCTOR_SCREEN() {
         initComponents();
     }
 
     public DOCTOR_SCREEN(String docPhone) {
+        initComponents();
         this.docPhone = docPhone;
     }
 
@@ -99,7 +101,7 @@ public class DOCTOR_SCREEN extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        LOGIN_SCREEN L=new LOGIN_SCREEN();
+        LOGIN_SCREEN L = new LOGIN_SCREEN();
         OPENCLOSE.closeAndOpen(this, L);
         Logger.log("Logged out from docrtor");
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -139,10 +141,11 @@ public class DOCTOR_SCREEN extends javax.swing.JFrame {
             }
         });
     }
+
     public void start() {
         DateDetailTable s = new DateDetailTable("jdbc:mysql://localhost:3306/maindb", "root", "");
         PatientTablee.setModel(s.getTableModelByDoctorPhone(docPhone));
-                Logger.log("Logged out from docrtor"+docPhone);
+        Logger.log("Logged out from docrtor" + docPhone);
 
     }
 
