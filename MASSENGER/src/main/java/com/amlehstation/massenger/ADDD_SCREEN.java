@@ -119,31 +119,30 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(320, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(359, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addGap(0, 6, Short.MAX_VALUE))
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 0, 51), 2));
         jPanel3.setForeground(new java.awt.Color(51, 0, 51));
 
-        jLabel2.setFont(new java.awt.Font("Segoe Print", 3, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe Print", 3, 28)); // NOI18N
         jLabel2.setText("Name : ");
 
         jLabel3.setFont(new java.awt.Font("Segoe Print", 3, 24)); // NOI18N
         jLabel3.setText("time : ");
 
-        jLabel4.setFont(new java.awt.Font("Segoe Print", 3, 24)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe Print", 3, 28)); // NOI18N
         jLabel4.setText("Email : ");
 
-        jLabel5.setFont(new java.awt.Font("Segoe Print", 3, 24)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Segoe Print", 3, 28)); // NOI18N
         jLabel5.setText("Phone : ");
 
         JPhone.addActionListener(new java.awt.event.ActionListener() {
@@ -164,6 +163,7 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
             }
         });
 
+        jSaturday.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jSaturday.setText("Saturday");
         jSaturday.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -171,6 +171,7 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
             }
         });
 
+        jSunday.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jSunday.setText("Sunday");
         jSunday.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -178,6 +179,7 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
             }
         });
 
+        jMonday.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jMonday.setText("Monday");
         jMonday.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -185,6 +187,7 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
             }
         });
 
+        jTuesday.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jTuesday.setText("Tuesday");
         jTuesday.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -192,11 +195,19 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
             }
         });
 
+        jWednesday.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jWednesday.setText("Wednesday");
 
+        jThursday.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jThursday.setText("Thursday");
 
+        jFriday.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jFriday.setText("Friday");
+        jFriday.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFridayActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("FROM");
 
@@ -371,7 +382,7 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
             }
         });
 
-        jLabel20.setFont(new java.awt.Font("Segoe Print", 3, 24)); // NOI18N
+        jLabel20.setFont(new java.awt.Font("Segoe Print", 3, 28)); // NOI18N
         jLabel20.setText("Password : ");
 
         jPasswordField1.setText("jPasswordField1");
@@ -380,159 +391,161 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(121, Short.MAX_VALUE)
+                .addGap(42, 42, 42)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(JName))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(JEmail))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(jLabel5)
+                        .addGap(18, 18, 18)
+                        .addComponent(JPhone))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel20)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPasswordField1)))
+                .addGap(232, 232, 232))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(90, 90, 90)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jWednesday, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jThursday, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jFriday)
+                        .addGap(84, 84, 84)
+                        .addComponent(jLabel18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(FridayComboBoxFH, 0, 1, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(FridayComboBoxFM, 0, 1, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel19)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(FridayComboBoxTH, 0, 1, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(FridayComboBoxTM, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jTuesday, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jSaturday)
+                        .addGap(70, 70, 70)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(SaturdayComboBoxFH, 0, 1, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(SaturdayComboBoxFM, 0, 1, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(SaturdayComboBoxTH, 0, 1, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(SaturdayComboBoxTM, 0, 1, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSunday)
+                            .addComponent(jMonday))
+                        .addGap(72, 72, 72)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
+                                .addComponent(jLabel10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(MondayComboBoxFH, 0, 1, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(MondayComboBoxFM, 0, 1, Short.MAX_VALUE)
                                 .addGap(18, 18, 18)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTuesday)
-                                    .addComponent(jWednesday)
-                                    .addComponent(jThursday)
-                                    .addComponent(jFriday)
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(jPanel3Layout.createSequentialGroup()
-                                            .addComponent(jSaturday)
-                                            .addGap(70, 70, 70)
-                                            .addComponent(jLabel6)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(SaturdayComboBoxFH, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(SaturdayComboBoxFM, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(jLabel7)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(SaturdayComboBoxTH, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(SaturdayComboBoxTM, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(jPanel3Layout.createSequentialGroup()
-                                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jSunday)
-                                                .addComponent(jMonday))
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(jPanel3Layout.createSequentialGroup()
-                                                    .addComponent(jLabel10)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                    .addComponent(MondayComboBoxFH, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(MondayComboBoxFM, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addGap(18, 18, 18)
-                                                    .addComponent(jLabel11)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(MondayComboBoxTH, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(MondayComboBoxTM, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGroup(jPanel3Layout.createSequentialGroup()
-                                                    .addComponent(jLabel8)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                    .addComponent(SundayComboBoxFH, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(SundayComboBoxFM, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addGap(18, 18, 18)
-                                                    .addComponent(jLabel9)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(SundayComboBoxTH, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(SundayComboBoxTM, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGroup(jPanel3Layout.createSequentialGroup()
-                                                    .addComponent(jLabel12)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                    .addComponent(TuesdayComboBoxFH, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(TuesdayComboBoxFM, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addGap(18, 18, 18)
-                                                    .addComponent(jLabel13)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(TuesdayComboBoxTH, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(TuesdayComboBoxTM, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGroup(jPanel3Layout.createSequentialGroup()
-                                                    .addComponent(jLabel14)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                    .addComponent(WednesdayComboBoxFH, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(WednesdayComboBoxFM, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addGap(18, 18, 18)
-                                                    .addComponent(jLabel15)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(WednesdayComboBoxTH, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(WednesdayComboBoxTM, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGroup(jPanel3Layout.createSequentialGroup()
-                                                    .addComponent(jLabel16)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                    .addComponent(ThursdayComboBoxFH, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(ThursdayComboBoxFM, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addGap(18, 18, 18)
-                                                    .addComponent(jLabel17)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(ThursdayComboBoxTH, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(ThursdayComboBoxTM, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGroup(jPanel3Layout.createSequentialGroup()
-                                                    .addComponent(jLabel18)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                    .addComponent(FridayComboBoxFH, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(FridayComboBoxFM, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addGap(18, 18, 18)
-                                                    .addComponent(jLabel19)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(FridayComboBoxTH, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(FridayComboBoxTM, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(78, 78, 78)))
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(JName, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addComponent(jLabel5)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(JPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addComponent(jLabel4)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(JEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel20)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(79, 79, 79)))
-                .addContainerGap(161, Short.MAX_VALUE))
+                                .addComponent(jLabel11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(MondayComboBoxTH, 0, 1, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(MondayComboBoxTM, 0, 1, Short.MAX_VALUE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(SundayComboBoxFH, 0, 1, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(SundayComboBoxFM, 0, 1, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(SundayComboBoxTH, 0, 1, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(SundayComboBoxTM, 0, 1, Short.MAX_VALUE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                        .addGap(139, 139, 139)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel14)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(WednesdayComboBoxFH, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(WednesdayComboBoxFM, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel15)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(WednesdayComboBoxTH, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(WednesdayComboBoxTM, 0, 74, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel16)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(ThursdayComboBoxFH, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(ThursdayComboBoxFM, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel17)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(ThursdayComboBoxTH, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(ThursdayComboBoxTM, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel12)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(TuesdayComboBoxFH, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TuesdayComboBoxFM, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel13)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TuesdayComboBoxTH, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TuesdayComboBoxTM, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                .addGap(127, 127, 127))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
+                .addGap(29, 29, 29)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(JName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 19, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(JPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 19, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(JEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 19, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20)
                     .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
+                .addGap(90, 90, 90)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jSaturday)
@@ -542,7 +555,7 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(SaturdayComboBoxTH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SaturdayComboBoxTM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 24, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jSunday)
                     .addComponent(jLabel8)
@@ -551,7 +564,7 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
                     .addComponent(jLabel9)
                     .addComponent(SundayComboBoxTH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SundayComboBoxTM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 19, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jMonday)
                     .addComponent(jLabel10)
@@ -560,7 +573,7 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
                     .addComponent(jLabel11)
                     .addComponent(MondayComboBoxTH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(MondayComboBoxTM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 19, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTuesday)
                     .addComponent(jLabel12)
@@ -569,7 +582,7 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
                     .addComponent(jLabel13)
                     .addComponent(TuesdayComboBoxTH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TuesdayComboBoxTM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 19, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jWednesday)
                     .addComponent(jLabel14)
@@ -578,7 +591,7 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
                     .addComponent(jLabel15)
                     .addComponent(WednesdayComboBoxTH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(WednesdayComboBoxTM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 19, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jThursday)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -588,21 +601,21 @@ public class ADDD_SCREEN extends javax.swing.JFrame {
                         .addComponent(jLabel17)
                         .addComponent(ThursdayComboBoxTH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(ThursdayComboBoxTM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 19, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jFriday)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel18)
                         .addComponent(FridayComboBoxFH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(FridayComboBoxFM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel19)
                         .addComponent(FridayComboBoxTH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(FridayComboBoxTM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                        .addComponent(FridayComboBoxTM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jFriday))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -802,6 +815,10 @@ Logger.log("canceled operation");
     private void SaturdayComboBoxFMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaturdayComboBoxFMActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_SaturdayComboBoxFMActionPerformed
+
+    private void jFridayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFridayActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFridayActionPerformed
 
     /**
      * @param args the command line arguments
