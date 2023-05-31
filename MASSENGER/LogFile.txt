@@ -132,3 +132,8 @@ Date: 2023-05-07  Time: ٠٩:١٥:٠٠
 [2023-05-26 16:59:31] canceled operation
 [2023-05-26 17:02:28] selected (Add Doctor) option
 [2023-05-26 17:02:29] canceled operation
+[2023-05-31 11:09:27] Logged in
+[2023-05-31 11:25:40] Logged in
+[2023-05-31 11:25:45] selected (Add Doctor) option
+[2023-05-31 11:26:11] selected (Del Doctor) option
+[2023-05-31 11:26:23] canceled operation
